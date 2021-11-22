@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+  --transition-speed: 0.2s;
+}
+
+* {
+  // font-family: proxima-nova, 'Proxima Nova', 'Noto Sans Japanese', -apple-system,
+  //   system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+  //   MyYuGothicM, YuGothic, 'Hiragino Kaku Gothic ProN', Meiryo;
+
+  font-family: 'Montserrat', sans-serif, 'Noto Sans Japanese', -apple-system,
+    system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+   MyYuGothicM, YuGothic, 'Hiragino Kaku Gothic ProN', Meiryo !important;
+
+  // font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  @apply m-0 p-0 box-border antialiased text-base;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  word-spacing: 1px;
+  color: var(--color);
+  background-color: var(--bg);
+  background-attachment: fixed;
+}
+
+*,
+*::before,
+*::after {
+  @apply box-border m-0;}
+
+button, input, select, textarea {
+  @apply focus:outline-none outline-none;
+}
+.scroll-none {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+  list-style: none !important;
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+  }
+}
+
+.no-shadow {
+  box-shadow: none !important;
+  &:hover {
+    box-shadow: none !important;
+  }
+}
+
+.text-danger {
+  color: $red;
+}
+
+.divider {
+  @apply w-full z-50 mb-4 pb-4;
+  border-bottom: solid 1px #ccc !important;
+  padding: 0 -9999px;
+}
+
+.card {
+  @apply p-6 rounded;
+  background-color: var(--bg-secondary);
+  // margin-bottom: auto !important;
+  // -webkit-box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+  // // box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+  &-lg {
+    @apply p-10 rounded;
+    background-color: var(--bg-secondary);
+  }
+}
+
+.mb-auto {
+  margin-bottom: auto !important;
+}
+
+// ロゴのsvg
+.path {
+  stroke: var(--logo) !important;
+  fill: var(--logo) !important;
+  stroke-width: 1.138 !important;
+  stroke-miterlimit: 2 !important;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  color: var(--strong);
+}
+
+.svg-icon {
+  @apply flex-shrink-0 p-2 rounded-full;
+  min-height: 45px;
+  min-width: 45px;
+  max-height: 45px;
+  max-width: 45px;
+  fill: #91949C;
+  transform:  msfilter;
+  &:hover {
+    // @apply;
+    fill:rgba(var(--primary));
+    // background: var(--light-primary);
+    // border: 1px solid #CDD7EE;
+  }
+}

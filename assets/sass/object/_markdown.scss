@@ -1,0 +1,282 @@
+:root {
+  .markdown {
+    h1 {
+      font-size: 36px;
+      font-weight: bold;
+      padding: 20px 0;
+    }
+    h2 {
+      font-size: 22px;
+      font-weight: bold;
+      background-image: linear-gradient(to right bottom, #2a4dc1, #295cc9, #2d6ad0, #3678d7, #4286dc, #4d88de, #568ae0, #5f8ce2, #6a82df, #7776db, #8569d4, #935bca);
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 5px;
+      margin: 40px 0 10px;
+    }
+    h3 {
+      font-size: 22px;
+      font-weight: bold;
+      border-bottom: 3px solid rgba(var(--primary), 1);
+      margin: 40px 0 10px;
+    }
+    h4 {
+      font-size: 18px;
+      font-weight: bold;
+      border-left: 3px solid rgba(var(--primary), 1);
+      margin: 40px 0 10px;
+      padding: 0 0 0 10px;
+    }
+    h5 {
+      font-size: 16px;
+      margin: 40px 0 10px;
+      font-weight: bold;
+    }
+
+    /*//////////////////////////////////////////////*/
+    /* tags */
+    /*//////////////////////////////////////////////*/
+
+    hr {
+      height: 1px;
+      background-color: #b8bfbe;
+      margin: 20px 0;
+    }
+    em {
+      background: linear-gradient(transparent 80%, #e7ff46 80%);
+      padding: 0 5px;
+      font-style: normal;
+    }
+    strong {
+      @apply font-bold;
+      padding: 0 5px;
+      border-radius: 5px;
+    }
+
+    p code,
+    li code,
+    td code {
+      background-color: #d0d8d7;
+      font-size: 90%;
+      font-style: normal;
+      padding: 0 5px;
+      border-radius: 3px;
+      color: #1b1b1b;
+    }
+    pre {
+      background-color: #282C34 !important;
+      border-radius: 0.5rem !important;
+      code {
+        border-radius: 0.5rem !important;
+      }
+    }
+
+    /*//////////////////////////////////////////////*/
+    /* list */
+    /*//////////////////////////////////////////////*/
+
+    ul,
+    ol {
+      padding: 0 0 0.5em 1.5em;
+    }
+    ul > li,
+    ol > li {
+      position: relative;
+      list-style: none;
+      margin: 5px 0;
+    }
+    ul > li::after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0.5em;
+      left: -1em;
+      width: 6px;
+      height: 6px;
+          background-image: linear-gradient(to right bottom, #2a4dc1, #295cc9, #2d6ad0, #3678d7, #4286dc, #4d88de, #568ae0, #5f8ce2, #6a82df, #7776db, #8569d4, #935bca);
+      border-radius: 100%;
+    }
+    ul ul li::after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0.75em;
+      left: -1em;
+      width: 6px;
+      height: 2px;
+          background-image: linear-gradient(to right bottom, #2a4dc1, #295cc9, #2d6ad0, #3678d7, #4286dc, #4d88de, #568ae0, #5f8ce2, #6a82df, #7776db, #8569d4, #935bca);
+    }
+    ul ul ul li::after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0.5em;
+      left: -1em;
+      width: 6px;
+      height: 6px;
+      border-right: 2px solid rgba(var(--primary), 1);
+      border-bottom: 2px solid rgba(var(--primary), 1);
+      background-color: inherit;
+      border-radius: 0;
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+    /* arrow */
+    ul.arrow > li::after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0.5em;
+      left: -1em;
+      width: 6px;
+      height: 6px;
+      border-right: 2px solid rgba(var(--primary), 1);
+      border-bottom: 2px solid rgba(var(--primary), 1);
+      background-color: inherit;
+      border-radius: 0;
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+
+    /* check */
+    ul.check > li::after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0.5em;
+      left: -1em;
+      width: 8px;
+      height: 3px;
+      border-left: 2px solid rgba(var(--primary), 1);
+      border-bottom: 2px solid rgba(var(--primary), 1);
+      background-color: inherit;
+      border-radius: 0;
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+
+    /* ol */
+    ol > li {
+      counter-increment: li;
+    }
+    ol > li::before {
+      content: counter(li);
+      display: block;
+      position: absolute;
+      top: .3em;
+      left: -1em;
+      color: rgba(var(--primary), 1);
+      font-size: 14px;
+      line-height: 1;
+      font-weight: bold;
+    }
+
+    /*//////////////////////////////////////////////*/
+    /* table */
+    /*//////////////////////////////////////////////*/
+
+    table {
+      border-collapse: collapse;
+      border: 1px solid #b7bdbc !important;
+      line-height: 1.5;
+      margin: 10px 0;
+      width: 100%;
+    }
+    table th {
+      padding: 10px;
+      font-size: 12px;
+      font-weight: bold;
+      vertical-align: top;
+      text-align: left;
+      background: #c6cbca;
+      border: 1px solid #b7bdbc !important;
+    }
+    table td {
+      font-size: 12px;
+      padding: 10px;
+      vertical-align: top;
+      border: 1px solid #b7bdbc !important;
+    }
+
+    /* stripe */
+    table.stripe tr:nth-child(even) {
+      background: #dcdfdf;
+    }
+
+    /* dark th */
+    table.dark th {
+      color: #e5e8e8;
+      background: #272b2b;
+    }
+
+    /*//////////////////////////////////////////////*/
+    /* box */
+    /*//////////////////////////////////////////////*/
+
+    .box_gray {
+      background: #dcdfdf;
+      border: 2px solid #b8bfbe;
+      border-radius: 10px;
+      margin: 20px 0;
+      padding: 1em;
+    }
+
+    .box_pink {
+      background: #e7d5d5;
+      border: 2px solid #d47e7e;
+      border-radius: 10px;
+      margin: 20px 0;
+      padding: 1em;
+    }
+
+    .box_pink ul, .box_pink ol {
+      padding: 0 0 0 1.5em;
+    }
+    .box_pink ol > li::before {
+      content: counter(li);
+      display: block;
+      position: absolute;
+      top: .3em;
+      left: -1em;
+      color: #d47e7e;
+      line-height: 1;
+      font-weight: bold;
+    }
+    .box_pink ul > li::after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0.5em;
+      left: -1em;
+      width: 6px;
+      height: 6px;
+      background-color: #d47e7e;
+      border-radius: 100%;
+    }
+
+    .box_gray ul, .box_gray ol {
+      padding: 0 0 0 1.5em;
+    }
+    .box_gray ol > li::before {
+      content: counter(li);
+      display: block;
+      position: absolute;
+      top: .3em;
+      left: -1em;
+      color: #b8bfbe;
+      line-height: 1;
+      font-weight: bold;
+    }
+    .box_gray ul > li::after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0.5em;
+      left: -1em;
+      width: 6px;
+      height: 6px;
+      background-color: #b8bfbe;
+      border-radius: 100%;
+    }
+  }
+}

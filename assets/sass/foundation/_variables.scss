@@ -1,0 +1,91 @@
+:root {
+  --primary: 42, 77, 193; // #045AFC
+  --light-primary: #F2F5FF;
+  --logo: #045AFC;
+  // --primary: #4070E9;
+  --color: #1f2137;
+  --sub-color: #9f9f9f;
+  // --bg: #F5F5F7;
+  --bg: #F7F8FA;
+  --bg-secondary: #fff;
+  --red: #FE4164;
+  // --gold2: #b76e79;
+  --color-secondary: #233a43;
+  --fff: #fff;
+  --f8: #f8f8f8;
+  --aaa: #aaa;
+  --adb: #adbad2;
+  --b2b: #b2bed5;
+  --ccc: #ccc;
+  --ddd: #ddd;
+  --eee: #eee;
+  --fcfcfc: #fcfcfc;
+  --fefefe: #fefefe;
+  --gold: #e7ca8e;
+  --gold2: #af7b52;
+  --black: #232324;
+  --black02: #292526;
+  --black03: #2b2c30;
+  --gray01: #ededf3;
+  --gray02: #7c7c7e;
+  --293: #293c64;
+  --thick-gray: #B9B9C3;
+  --gray: #d8d6de;
+  --strong: #050505;
+  .bg-primary {
+    background-image: linear-gradient(to right bottom, #2a4dc1, #295cc9, #2d6ad0, #3678d7, #4286dc, #4d88de, #568ae0, #5f8ce2, #6a82df, #7776db, #8569d4, #935bca);
+  }
+  .bg-secondary {
+      background: #f0f2f6;
+      &:hover {
+        background: #ebebeb ;
+      }
+  }
+  .bg-danger {
+    background-image: linear-gradient(to right bottom, #f47595, #e86f95, #dc6a95, #d06594, #c36093, #b95a93, #af5494, #a44f94, #984897, #8a429b, #793e9e, #643ba2);
+  }
+  .primary-color {
+    color: var(--primary);
+    svg g path,
+    svg g circle,
+    svg g ellipse,
+    svg path {
+      stroke: var(--primary);
+    }
+  }
+}
+
+.dark-mode {
+  --logo: #fff;
+  --color: #BBBCC1;
+  // --color-primary: #41b38a;
+  // --color-secondary: #fdf9f3;
+
+  // --bg: #2A2A2E;
+  // --bg-secondary: ;
+
+  --bg: #202124;
+  --bg-secondary: #171717;
+  --bg-third: #42414C;
+  --border-color: #0d2538;
+}
+
+$color: #293c64;
+
+$color-primary: #af7b52;
+$sub-primary: #233a43;
+$black: #000000;
+$beige: #e6d8b3;
+$wine-red: #ec5252;
+$white: white;
+
+$white: #fff;
+$black: #1C1C1C;
+$gold: #ECB756;
+$blue: #3367D6;
+$thin-blue: #00b9f1;
+$green: #2ecc71;
+$orange: #ff6c5f;
+$yellow: #F69818;
+$purple: #8e43e7;
+$red: #ff4f81;

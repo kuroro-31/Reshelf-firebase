@@ -1,0 +1,29 @@
+.vue-tags-input {
+  @apply w-full;
+  max-width: 100% !important;
+  background: var(--bg-secondary) !important;
+}
+.vue-tags-input .ti-tag {
+  color: var(--color) !important;
+  background: rgba(var(--primary), 0.1) !important;
+  border: 1px solid rgba(var(--primary))!important;
+  margin-right: 5px !important;
+}
+.vue-tags-input .ti-tag::before {
+  // content: '#';
+}
+.ti-input {
+  width: 100% !important;
+  border: none !important;
+}
+.ti-autocomplete {
+  border: none !important;
+}
+.ti-item > div {
+  color: var(--color) !important;
+  background: var(--bg-secondary) !important;
+  &:hover {
+    color: var(--fff) !important;
+    background: rgba(var(--primary)) !important;
+  }
+}
