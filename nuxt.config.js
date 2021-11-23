@@ -95,7 +95,7 @@ export default {
     // '~/plugins/lodash.js',
     '~/plugins/vue-highlightjs',
     { src: '~/plugins/firebase.js', mode: 'client' },
-    '~/plugins/firebase.auth.js',
+    // '~/plugins/firebase.auth.js',
   ],
   vendor: [
     'vue-i18n', // i18n

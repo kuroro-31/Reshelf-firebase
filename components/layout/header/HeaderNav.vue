@@ -428,6 +428,8 @@
 </template>
 
 <script>
+import { getAuth, signOut } from 'firebase/auth'
+
 import ReButton from '@/components/atoms/ReButton'
 import ReModal from '@/components/atoms/ReModal'
 import FacebookLogin from '../../atoms/auth/FacebookLogin.vue'
@@ -459,6 +461,20 @@ export default {
       errors: {},
       alert: '',
     }
+  },
+  methods: {
+    logout() {
+      const auth = getAuth()
+      signOut(auth)
+        .then(() => {
+          // Sign-out successful.
+          alert('サインアウトしました。')
+        })
+        .catch((error) => {
+          // An error happened.
+          console.error(error)
+        })
+    },
   },
 }
 </script>
