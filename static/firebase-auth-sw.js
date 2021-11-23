@@ -1,12 +1,24 @@
-const ignorePaths = ["\u002F__webpack_hmr","\u002F_loading","\u002F_nuxt\u002F"]
+const ignorePaths = [
+  '\u002F__webpack_hmr',
+  '\u002F_loading',
+  '\u002F_nuxt\u002F',
+]
 
-importScripts(
-  'https://www.gstatic.com/firebasejs/9.5.0/firebase-app-compat.js'
-)
+importScripts('https://www.gstatic.com/firebasejs/9.5.0/firebase-app-compat.js')
 importScripts(
   'https://www.gstatic.com/firebasejs/9.5.0/firebase-auth-compat.js'
 )
-firebase.initializeApp({"apiKey":"AIzaSyB52K0YyvLSsM1C1G0PU-ueoSskdH5yfMI","authDomain":"reshelf-nuxt-app.firebaseapp.com","databaseURL":"https:\u002F\u002Freshelf-nuxt-app-default-rtdb.asia-southeast1.firebasedatabase.app\u002F","projectId":"reshelf-nuxt-app","storageBucket":"reshelf-nuxt-app.appspot.com","messagingSenderId":"447357487424","appId":"1:447357487424:web:c6d994b85095f1ae7192a5","measurementId":"G-W9B3J3BJ4K"})
+firebase.initializeApp({
+  apiKey: 'AIzaSyB52K0YyvLSsM1C1G0PU-ueoSskdH5yfMI',
+  authDomain: 'reshelf-nuxt-app.firebaseapp.com',
+  databaseURL:
+    'https:\u002F\u002Freshelf-nuxt-app-default-rtdb.asia-southeast1.firebasedatabase.app\u002F',
+  projectId: 'reshelf-nuxt-app',
+  storageBucket: 'reshelf-nuxt-app.appspot.com',
+  messagingSenderId: '447357487424',
+  appId: '1:447357487424:web:c6d994b85095f1ae7192a5',
+  measurementId: 'G-W9B3J3BJ4K',
+})
 
 // Initialize authService
 const authService = firebase.auth()
@@ -22,11 +34,14 @@ const getIdToken = () => {
       unsubscribe()
       if (user) {
         // force token refresh as it might be used to sign in server side
-        user.getIdToken(true).then((idToken) => {
-          resolve(idToken)
-        }, () => {
-          resolve(null)
-        })
+        user.getIdToken(true).then(
+          (idToken) => {
+            resolve(idToken)
+          },
+          () => {
+            resolve(null)
+          }
+        )
       } else {
         resolve(null)
       }
@@ -50,7 +65,7 @@ const fetchWithAuthorization = async (original, idToken) => {
     ...props,
     mode: 'same-origin',
     redirect: 'manual',
-    headers
+    headers,
   })
 
   return fetch(authorized)
@@ -62,9 +77,12 @@ self.addEventListener('fetch', (event) => {
   const expectsHTML = event.request.headers.get('accept').includes('text/html')
 
   const isSameOrigin = self.location.origin === url.origin
-  const isHttps = (self.location.protocol === 'https:' || self.location.hostname === 'localhost' || self.location.hostname === '127.0.0.1')
+  const isHttps =
+    self.location.protocol === 'https:' ||
+    self.location.hostname === 'localhost' ||
+    self.location.hostname === '127.0.0.1'
 
-  const isIgnored = ignorePaths.some(path => {
+  const isIgnored = ignorePaths.some((path) => {
     if (typeof path === 'string') {
       return url.pathname.startsWith(path)
     }
@@ -74,7 +92,7 @@ self.addEventListener('fetch', (event) => {
 
   // https://github.com/nuxt-community/firebase-module/issues/465
   if (!expectsHTML || !isSameOrigin || !isHttps || isIgnored) {
-      event.respondWith(fetch(event.request))
+    event.respondWith(fetch(event.request))
 
     return
   }
@@ -83,18 +101,20 @@ self.addEventListener('fetch', (event) => {
   // This can also be integrated with existing logic to serve cached files
   // in offline mode.
   event.respondWith(
-    getIdToken().then(
-      idToken => idToken
-        // if the token was retrieved we attempt an authorized fetch
-        // if anything goes wrong we fall back to the original request
-        ? fetchWithAuthorization(event.request, idToken).catch(() => fetch(event.request))
-        // otherwise we return a fetch of the original request directly
-        : fetch(event.request)
+    getIdToken().then((idToken) =>
+      idToken
+        ? // if the token was retrieved we attempt an authorized fetch
+          // if anything goes wrong we fall back to the original request
+          fetchWithAuthorization(event.request, idToken).catch(() =>
+            fetch(event.request)
+          )
+        : // otherwise we return a fetch of the original request directly
+          fetch(event.request)
     )
   )
 })
 
 // In service worker script.
-self.addEventListener('activate', event => {
+self.addEventListener('activate', (event) => {
   event.waitUntil(clients.claim())
 })

@@ -94,34 +94,32 @@
           </nuxt-link>
           <!-- <template v-if="authenticated"> -->
           <!-- <template v-if="user.id === item.user.id"> -->
-          <template>
-            <span @click="delete_modal = !delete_modal">削除</span>
-            <ReModal v-if="delete_modal" @close="delete_modal = !delete_modal">
-              <template slot="header">コースの削除</template>
-              <div class="w-full flex flex-col justify-center">
-                <div
-                  v-if="$store.state.authenticate.authenticated"
-                  class="main-body-content py-0"
-                >
-                  <p class="mb-4">{{ alert }}</p>
-                  <form @click="deletePost(item.id)">
-                    <re-button class="re-button">
-                      <button
-                        type="submit"
-                        class="re-button-primary bg-danger ml-auto"
-                      >
-                        削除
-                      </button>
-                    </re-button>
-                  </form>
-                </div>
-                <div v-else>ログインしてください</div>
+          <span @click="delete_modal = !delete_modal">削除</span>
+          <ReModal v-if="delete_modal" @close="delete_modal = !delete_modal">
+            <template slot="header">コースの削除</template>
+            <div class="w-full flex flex-col justify-center">
+              <div
+                v-if="$store.state.authenticate.authenticated"
+                class="main-body-content py-0"
+              >
+                <p class="mb-4">{{ alert }}</p>
+                <form @click="deletePost(item.id)">
+                  <re-button class="re-button">
+                    <button
+                      type="submit"
+                      class="re-button-primary bg-danger ml-auto"
+                    >
+                      削除
+                    </button>
+                  </re-button>
+                </form>
               </div>
-            </ReModal>
-            <nuxt-link :to="{ name: 'item-edit-id', params: { id: item.id } }">
-              編集
-            </nuxt-link>
-          </template>
+              <div v-else>ログインしてください</div>
+            </div>
+          </ReModal>
+          <nuxt-link :to="{ name: 'item-edit-id', params: { id: item.id } }">
+            編集
+          </nuxt-link>
         </div>
       </div>
     </div>

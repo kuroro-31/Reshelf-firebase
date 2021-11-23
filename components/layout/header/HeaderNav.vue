@@ -53,18 +53,17 @@
       <div class="nav-right">
         <input type="text" class="search" placeholder="Search..." />
 
-        <template>
-          <form @submit.prevent="create">
-            <re-button class="re-button re-button-small no-shadow">
-              <button
-                class="re-button-primary-border bg-secondary"
-                @click="create_modal = !create_modal"
-              >
-                コースの作成
-              </button>
-            </re-button>
-          </form>
-          <!-- <ReModal v-if="create_modal" @close="create_modal = !create_modal">
+        <form @submit.prevent="create">
+          <re-button class="re-button re-button-small no-shadow">
+            <button
+              class="re-button-primary-border bg-secondary"
+              @click="create_modal = !create_modal"
+            >
+              コースの作成
+            </button>
+          </re-button>
+        </form>
+        <!-- <ReModal v-if="create_modal" @close="create_modal = !create_modal">
             <template slot="header">新規コースの作成</template>
             <div class="w-full flex flex-col justify-center">
               <div
@@ -86,7 +85,6 @@
               <div v-else>ログインしてください</div>
             </div>
           </ReModal> -->
-        </template>
 
         <!-- お気に入り -->
         <button
@@ -304,14 +302,14 @@
               @mouseleave="dropdown = false"
             >
               <div class="menu">
-                <div class="menu-name">
+                <div v-if="form.name" class="menu-name">
                   <img
                     width="50px"
                     height="50px"
                     src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
                   />
                   <span class="menu-name-person">
-                    {{ user.name }}
+                    {{ form.name }}
                   </span>
                 </div>
                 <div class="menu-me">
@@ -450,7 +448,6 @@ export default {
       dropdown: false,
       post: false,
       like: false,
-
       auth: {
         email: '',
         password: '',
@@ -460,7 +457,20 @@ export default {
       },
       errors: {},
       alert: '',
+
+      form: {
+        name: null,
+        message: '',
+      },
     }
+  },
+  mounted() {
+    const auth = getAuth()
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.form.name = user.displayName
+      }
+    })
   },
   methods: {
     logout() {
@@ -469,6 +479,7 @@ export default {
         .then(() => {
           // Sign-out successful.
           alert('サインアウトしました。')
+          this.$router.push('/auth/login')
         })
         .catch((error) => {
           // An error happened.
