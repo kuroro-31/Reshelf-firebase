@@ -3,7 +3,7 @@
     <HeaderNav />
 
     <!--  -->
-    <div v-if="!$store.state.authenticate.authenticated" class="hero">
+    <div class="hero">
       <div class="flex lg:w-1/2 justify-center h-full items-center">
         <div class="flex flex-col">
           <h2 class="title">
@@ -272,7 +272,7 @@
     </div>
 
     <!-- 学習分野 -->
-    <div v-if="!$store.state.authenticate.authenticated">
+    <div>
       <div class="field bg-primary">
         <h3>学習分野</h3>
       </div>

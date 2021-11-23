@@ -3,8 +3,27 @@ import Fiber from 'fibers'
 import Sass from 'sass'
 
 require('dotenv').config()
-const { FACEBOOK_ID, FACEBOOK_URL, ROOT_URL, NGROK } = process.env
+const {
+  FIREBASE_API_KEY,
+  FIREBASE_AUTH_DOMAIN,
+  FIREBASE_DATABASE_URL,
+  FIREBASE_PROJECT_ID,
+  FIREBASE_STORAGE_BUCKET,
+  FIREBASE_MESSSAGE_SENDER_ID,
+  FIREBASE_APP_ID,
+  FIREBASE_MEASUREMENT_ID,
+} = process.env
 export default {
+  env: {
+    FIREBASE_API_KEY,
+    FIREBASE_AUTH_DOMAIN,
+    FIREBASE_DATABASE_URL,
+    FIREBASE_PROJECT_ID,
+    FIREBASE_STORAGE_BUCKET,
+    FIREBASE_MESSSAGE_SENDER_ID,
+    FIREBASE_APP_ID,
+    FIREBASE_MEASUREMENT_ID,
+  },
   head: {
     title: 'Reshelf| アップデートするオンライン学習マーケットプレイス',
     htmlAttrs: {
@@ -74,7 +93,9 @@ export default {
   plugins: [
     '~/plugins/i18n.js',
     // '~/plugins/lodash.js',
-    '@/plugins/vue-highlightjs',
+    '~/plugins/vue-highlightjs',
+    { src: '~/plugins/firebase.js', mode: 'client' },
+    '~/plugins/firebase.auth.js',
   ],
   vendor: [
     'vue-i18n', // i18n
@@ -85,19 +106,7 @@ export default {
     '@nuxtjs/proxy',
     '@nuxtjs/auth',
     '@nuxtjs/pwa',
-    // [
-    //   'vue-social-auth/nuxt',
-    //   {
-    //     property: '$auth', // Optional property if the $auth property is being used by another module
-    //     providers: {
-    //       facebook: {
-    //         clientId: process.env.FACEBOOK_ID,
-    //         redirectUri: process.env.FACEBOOK_URL, // Your client app URL
-    //       },
-    //     },
-    //   },
-    // ],
-    'nuxt-client-init-module',
+    // 'nuxt-client-init-module',
   ],
   buildModules: [
     '@nuxtjs/eslint-module',
@@ -107,19 +116,8 @@ export default {
   ],
 
   axios: {
-    proxy: true,
+    // proxy: true,
     credentials: true,
-  },
-
-  proxy: {
-    '/api': {
-      target: process.env.ROOT_URL,
-      changeOrigin: true,
-    },
-    '/sanctum': {
-      target: process.env.ROOT_URL,
-      changeOrigin: true,
-    },
   },
 
   build: {
@@ -157,10 +155,14 @@ export default {
   //   routes: ['/', '/ja'],
   // }
 
-  env: {
-    FACEBOOK_ID,
-    FACEBOOK_URL,
-    ROOT_URL,
-    NGROK,
+  pwa: {
+    meta: false,
+    icon: true,
+
+    workbox: {
+      importScripts: ['/firebase-auth-sw.js'],
+
+      dev: true,
+    },
   },
 }

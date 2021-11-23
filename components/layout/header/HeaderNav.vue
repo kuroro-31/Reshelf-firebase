@@ -1,5 +1,5 @@
 <template>
-  <header class="nav" :class="{ active: user }">
+  <header class="nav">
     <div class="nav-content">
       <div class="nav-left py-2.5">
         <!-- <input id="side" type="checkbox" name="" value="" /> -->
@@ -53,7 +53,7 @@
       <div class="nav-right">
         <input type="text" class="search" placeholder="Search..." />
 
-        <template v-if="$store.state.authenticate.authenticated">
+        <template>
           <form @submit.prevent="create">
             <re-button class="re-button re-button-small no-shadow">
               <button
@@ -68,7 +68,7 @@
             <template slot="header">新規コースの作成</template>
             <div class="w-full flex flex-col justify-center">
               <div
-                v-if="$store.state.authenticate.authenticated"
+
                 class="main-body-content py-0"
               >
                 <p class="mb-4">{{ alert }}</p>
@@ -90,7 +90,6 @@
 
         <!-- お気に入り -->
         <button
-          v-if="$store.state.authenticate.authenticated"
           class="dropdown"
           @mouseover="like = true"
           @mouseleave="like = false"
@@ -111,7 +110,6 @@
 
         <!-- カート -->
         <button
-          v-if="$store.state.authenticate.authenticated"
           class="dropdown"
           @mouseover="cart = true"
           @mouseleave="cart = false"
@@ -288,7 +286,6 @@
 
         <!-- ユーザードロップダウン -->
         <button
-          v-if="$store.state.authenticate.authenticated"
           class="dropdown"
           @mouseover="dropdown = true"
           @mouseleave="dropdown = false"
@@ -363,13 +360,13 @@
 
         <!-- ログイン -->
         <!-- <nuxt-link
-          v-if="!$store.state.authenticate.authenticated"
+
           flat
           to="/auth/login"
         >
           ログイン
         </nuxt-link> -->
-        <div v-if="!$store.state.authenticate.authenticated" class="py-2.5">
+        <div class="py-2.5">
           <span class="cursor-pointer" @click="modal = !modal">ログイン</span>
           <ReModal v-if="modal" @close="modal = !modal">
             <template slot="header">Welcome To Reshelf！</template>
@@ -431,8 +428,6 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
-
 import ReButton from '@/components/atoms/ReButton'
 import ReModal from '@/components/atoms/ReModal'
 import FacebookLogin from '../../atoms/auth/FacebookLogin.vue'
@@ -445,7 +440,6 @@ export default {
   },
   data() {
     return {
-      user: this.$store.state.authenticate.authenticated,
       visible: false,
       modal: false,
       create_modal: false,
@@ -465,59 +459,6 @@ export default {
       errors: {},
       alert: '',
     }
-  },
-  methods: {
-    ...mapGetters({
-      authenticated: 'authenticate/authenticated',
-    }),
-    ...mapActions({
-      signIn: 'authenticate/login',
-      signOut: 'authenticate/logout',
-    }),
-    async create() {
-      // this.$axios.defaults.withCredentials = true
-      await this.$axios
-        .post('/api/posts', this.item)
-        .then(({ data }) => {
-          this.create_modal = false
-          this.$nuxt.$router.push({
-            name: 'item-edit-id',
-            params: { id: data.data.id },
-          })
-        })
-        .catch(({ response: { data } }) => {
-          // alert(data.message)
-          // console.log(data.message)
-
-          alert(data.message)
-          // this.$nuxt.$router.push({ path: '/auth/login' })
-        })
-    },
-    async login() {
-      this.$axios.defaults.withCredentials = true
-
-      // this.$nuxt.$loading.start()
-      await this.$axios.get('/sanctum/csrf-cookie').then(async () => {
-        await this.$axios
-          .post('/api/auth/login', this.auth)
-          .then(({ data }) => {
-            this.signIn()
-            this.modal = false
-            // this.$nuxt.$router.back()
-            // this.$nuxt.$router.push({ path: '/' })
-          })
-          .catch(({ response: { data } }) => {
-            alert(data.message)
-          })
-      })
-      // this.$nuxt.$loading.finish()
-    },
-    async logout() {
-      // this.$nuxt.$loading.start()
-      this.signOut()
-      this.$nuxt.$router.push({ path: '/' })
-      // this.$nuxt.$loading.finish()
-    },
   },
 }
 </script>

@@ -1,14 +1,32 @@
-import Vuex from 'vuex'
-import createPersistedState from 'vuex-persistedstate'
-import authenticate from './authenticate'
+import { auth } from '~/plugins/firebase.js'
 
-const store = () => {
-  return new Vuex.Store({
-    plugins: [createPersistedState()],
-    modules: {
-      authenticate,
-    },
-  })
+export const strict = false
+
+export const state = {
+  user: null,
 }
 
-export default store
+export const mutations = {
+  setUser(state, payload) {
+    state.user = payload
+  },
+}
+
+export const actions = {
+  signInWithFacebook({ commit }) {
+    return auth().signInWithPopup(new auth.FacebookAuthProvider())
+  },
+
+  signOut() {
+    return auth().signOut()
+  },
+}
+
+export const getters = {
+  user(state) {
+    return state.user
+  },
+  isAuthenticated(state) {
+    return !!state.user
+  },
+}
