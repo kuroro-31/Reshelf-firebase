@@ -51,9 +51,7 @@ Thumbs.db
 .history/*
 .nuxt/*
 .eslintcache
-package-lock.json
 .vscode/settings.json
 .env
-package.json
 .firebase/*
 .github/workflows/*
