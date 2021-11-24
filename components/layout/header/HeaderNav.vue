@@ -289,6 +289,7 @@
           @mouseleave="dropdown = false"
         >
           <img
+            v-if="fotm.photo"
             class="dropdown-img"
             width="40px"
             height="40px"
