@@ -306,7 +306,7 @@
                 <div v-if="user" class="menu-name">
                   <img width="50px" height="50px" :src="user.photoUrl" />
                   <span class="menu-name-person">
-                    {{ user.name }}
+                    {{ user }}
                   </span>
                 </div>
                 <div class="menu-me">
@@ -362,7 +362,7 @@
           ログイン
         </nuxt-link> -->
         <div class="py-2.5">
-          <span v-if="user">{{ user.name }}</span>
+          <span v-if="user">{{ user }}</span>
           <span v-if="user" class="cursor-pointer" @click="logout">
             >ログアウト
           </span>
