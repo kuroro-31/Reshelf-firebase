@@ -365,8 +365,17 @@
           ログイン
         </nuxt-link> -->
         <div class="py-2.5">
-          <span>{{ form.name }}</span>
-          <span class="cursor-pointer" @click="modal = !modal">ログイン</span>
+          <span v-if="form.name">{{ form.name }}</span>
+          <span v-if="form.name" class="cursor-pointer" @click="logout">
+            >ログアウト
+          </span>
+          <span
+            v-if="!form.name"
+            class="cursor-pointer"
+            @click="modal = !modal"
+          >
+            ログイン
+          </span>
           <ReModal v-if="modal" @close="modal = !modal">
             <template slot="header">Welcome To Reshelf！</template>
             <!-- default -->
