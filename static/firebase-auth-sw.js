@@ -1,3 +1,4 @@
+/* eslint-disable */
 const ignorePaths = [
   '\u002F__webpack_hmr',
   '\u002F_loading',
