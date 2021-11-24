@@ -289,10 +289,11 @@
           @mouseleave="dropdown = false"
         >
           <img
+            v-if="user"
             class="dropdown-img"
             width="40px"
             height="40px"
-            src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
+            :src="user.photoUrl"
           />
           <transition>
             <div
@@ -302,15 +303,10 @@
               @mouseleave="dropdown = false"
             >
               <div class="menu">
-                <div v-if="form.name" class="menu-name">
-                  <img
-                    v-if="form.photo"
-                    width="50px"
-                    height="50px"
-                    :src="form.photo"
-                  />
+                <div v-if="user" class="menu-name">
+                  <img width="50px" height="50px" :src="user.photoUrl" />
                   <span class="menu-name-person">
-                    {{ form.name }}
+                    {{ user.name }}
                   </span>
                 </div>
                 <div class="menu-me">
@@ -366,15 +362,11 @@
           ログイン
         </nuxt-link> -->
         <div class="py-2.5">
-          <span v-if="form.name">{{ form.name }}</span>
-          <span v-if="form.name" class="cursor-pointer" @click="logout">
+          <span v-if="user">{{ user.name }}</span>
+          <span v-if="user" class="cursor-pointer" @click="logout">
             >ログアウト
           </span>
-          <span
-            v-if="!form.name"
-            class="cursor-pointer"
-            @click="modal = !modal"
-          >
+          <span v-if="!user" class="cursor-pointer" @click="modal = !modal">
             ログイン
           </span>
           <ReModal v-if="modal" @close="modal = !modal">
@@ -428,20 +420,14 @@ export default {
       errors: {},
       alert: '',
 
-      form: {
-        name: null,
-        message: '',
-        photo: '',
-      },
+      user: {}, // ユーザー情報
     }
   },
   mounted() {
     const auth = getAuth()
     auth.onAuthStateChanged((user) => {
-      if (user) {
-        this.form.name = user.displayName
-        this.form.photo = user.photoUrl
-      }
+      // ログイン状態ならuserが取得できる
+      this.user = user ? user : {}
     })
   },
   methods: {
