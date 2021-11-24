@@ -284,6 +284,7 @@
 
         <!-- ユーザードロップダウン -->
         <button
+          v-if="user.id"
           class="dropdown"
           @mouseover="dropdown = true"
           @mouseleave="dropdown = false"
@@ -296,8 +297,8 @@
               @mouseleave="dropdown = false"
             >
               <div class="menu">
-                <div v-if="user.id" class="menu-name">
-                  <span v-if="user.displayName" class="menu-name-person">
+                <div class="menu-name">
+                  <span class="menu-name-person">
                     {{ user.displayName }}
                   </span>
                 </div>
@@ -413,7 +414,7 @@ export default {
     const auth = getAuth()
     auth.onAuthStateChanged((user) => {
       if (user) {
-        this.user.id = user.uid
+        this.user.id = user.idToken
         this.user.name = user.displayName
       }
     })
@@ -423,7 +424,7 @@ export default {
       const auth = getAuth()
       signOut(auth)
         .then(() => {
-          this.$router.push('/')
+          location.reload()
         })
         .catch((error) => {
           // An error happened.
