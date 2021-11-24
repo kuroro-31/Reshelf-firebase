@@ -289,11 +289,10 @@
           @mouseleave="dropdown = false"
         >
           <img
-            v-if="form.photo"
             class="dropdown-img"
             width="40px"
             height="40px"
-            :src="form.photo"
+            src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
           />
           <transition>
             <div
@@ -305,9 +304,10 @@
               <div class="menu">
                 <div v-if="form.name" class="menu-name">
                   <img
+                    v-if="form.photo"
                     width="50px"
                     height="50px"
-                    src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
+                    :src="form.photo"
                   />
                   <span class="menu-name-person">
                     {{ form.name }}
