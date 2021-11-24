@@ -4,6 +4,7 @@ import Sass from 'sass'
 
 require('dotenv').config()
 const {
+  FIREBASE_TOKEN,
   FIREBASE_API_KEY,
   FIREBASE_AUTH_DOMAIN,
   FIREBASE_DATABASE_URL,
@@ -15,6 +16,7 @@ const {
 } = process.env
 export default {
   env: {
+    FIREBASE_TOKEN,
     FIREBASE_API_KEY,
     FIREBASE_AUTH_DOMAIN,
     FIREBASE_DATABASE_URL,
