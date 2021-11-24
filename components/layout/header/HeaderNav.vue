@@ -284,7 +284,7 @@
 
         <!-- ユーザードロップダウン -->
         <button
-          v-if="user.id"
+          v-if="user.displayName"
           class="dropdown"
           @mouseover="dropdown = true"
           @mouseleave="dropdown = false"
@@ -348,10 +348,10 @@
 
         <div class="py-2.5">
           <span v-if="user.displayName">{{ user.displayName }}</span>
-          <span v-if="user.id" class="cursor-pointer" @click="logout">
+          <span v-if="user.displayName" class="cursor-pointer" @click="logout">
             ログアウト
           </span>
-          <div v-if="!user.id" class="cursor-pointer">
+          <div v-if="!user.displayName" class="cursor-pointer">
             <FacebookLogin />
           </div>
           <!-- <span @click="modal = !modal">aaa</span>
@@ -414,7 +414,6 @@ export default {
     const auth = getAuth()
     auth.onAuthStateChanged((user) => {
       if (user) {
-        this.user.id = user.idToken
         this.user.name = user.displayName
       }
     })
