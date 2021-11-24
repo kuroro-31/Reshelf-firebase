@@ -284,7 +284,6 @@
 
         <!-- ユーザードロップダウン -->
         <button
-          v-if="user.displayName"
           class="dropdown"
           @mouseover="dropdown = true"
           @mouseleave="dropdown = false"
@@ -298,7 +297,7 @@
             >
               <div class="menu">
                 <div class="menu-name">
-                  <span class="menu-name-person">
+                  <span v-if="user.displayName" class="menu-name-person">
                     {{ user.displayName }}
                   </span>
                 </div>
