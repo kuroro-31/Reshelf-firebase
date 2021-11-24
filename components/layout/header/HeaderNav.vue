@@ -292,7 +292,7 @@
             class="dropdown-img"
             width="40px"
             height="40px"
-            src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
+            :src="fotm.photo"
           />
           <transition>
             <div
@@ -380,47 +380,6 @@
             <template slot="header">Welcome To Reshelf！</template>
             <!-- default -->
             <div class="w-full flex flex-col justify-center">
-              <form @submit.prevent="login">
-                <!-- メールアドレス -->
-                <label class="font-semibold text-xs text-gray-600 pb-1 block">
-                  E-mail
-                </label>
-                <input
-                  v-model.trim="auth.email"
-                  type="email"
-                  placeholder="Enter email"
-                  autofocus
-                  class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-                />
-                <small v-if="errors.email" class="form-text text-danger">
-                  {{ errors.email[0] }}
-                </small>
-
-                <!-- パスワード -->
-                <label class="font-semibold text-xs text-gray-600 pb-1 block">
-                  Password
-                </label>
-                <input
-                  v-model.trim="auth.password"
-                  type="password"
-                  placeholder="Password"
-                  class="border rounded px-[30px] py-2 mt-1 mb-5 text-xs w-full"
-                />
-                <small v-if="errors.password" class="form-text text-danger">
-                  {{ errors.password[0] }}
-                </small>
-
-                <!-- ログインボタン -->
-                <re-button class="re-button">
-                  <button
-                    type="submit"
-                    class="re-button-primary-filled bg-primary ml-auto"
-                  >
-                    ログイン
-                  </button>
-                </re-button>
-              </form>
-              <div class="divider"></div>
               <FacebookLogin />
             </div>
             <!-- /default -->
@@ -471,6 +430,7 @@ export default {
       form: {
         name: null,
         message: '',
+        photo: '',
       },
     }
   },
@@ -479,6 +439,7 @@ export default {
     auth.onAuthStateChanged((user) => {
       if (user) {
         this.form.name = user.displayName
+        this.form.photo = user.photoUrl
       }
     })
   },
