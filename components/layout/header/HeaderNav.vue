@@ -348,7 +348,7 @@
         <div class="py-2.5">
           <span v-if="user.displayName">{{ user.displayName }}</span>
           <span v-if="user" class="cursor-pointer" @click="logout">
-            >ログアウト
+            ログアウト
           </span>
           <div v-if="!user" class="cursor-pointer">
             <FacebookLogin />
@@ -403,14 +403,19 @@ export default {
       errors: {},
       alert: '',
 
-      user: {}, // ユーザー情報
+      user: {
+        id: null,
+        name: null,
+      },
     }
   },
   mounted() {
     const auth = getAuth()
     auth.onAuthStateChanged((user) => {
-      // ログイン状態ならuserが取得できる
-      this.user = user ? user : {}
+      if (user) {
+        this.user.id = user.uid
+        this.user.name = user.displayName
+      }
     })
   },
   methods: {
@@ -418,9 +423,7 @@ export default {
       const auth = getAuth()
       signOut(auth)
         .then(() => {
-          // Sign-out successful.
-          alert('サインアウトしました。')
-          this.$router.push('/auth/login')
+          this.$router.push('/')
         })
         .catch((error) => {
           // An error happened.
