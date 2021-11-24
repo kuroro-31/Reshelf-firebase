@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "reshelf-nuxt-app"
+  },
+  "targets": {
+    "reshelf-nuxt-app": {
+      "hosting": {
+        "production": [
+          "reshelf-nuxt-app"
+        ],
+        "staging": [
+          "reshelf-nuxt-app-staging"
+        ]
+      }
+    }
   }
 }
