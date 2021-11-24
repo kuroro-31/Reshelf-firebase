@@ -289,11 +289,11 @@
           @mouseleave="dropdown = false"
         >
           <img
-            v-if="fotm.photo"
+            v-if="form.photo"
             class="dropdown-img"
             width="40px"
             height="40px"
-            :src="fotm.photo"
+            :src="form.photo"
           />
           <transition>
             <div
