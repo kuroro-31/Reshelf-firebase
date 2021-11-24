@@ -4,7 +4,7 @@ export default ({ store, route, redirect }) => {
     route.name !== 'login' &&
     route.name !== 'register'
   ) {
-    redirect('/auth/login')
+    redirect('/')
   }
   if (
     store.getters.isAuthenticated &&

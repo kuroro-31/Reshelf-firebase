@@ -288,13 +288,6 @@
           @mouseover="dropdown = true"
           @mouseleave="dropdown = false"
         >
-          <img
-            v-if="user"
-            class="dropdown-img"
-            width="40px"
-            height="40px"
-            :src="user.photoUrl"
-          />
           <transition>
             <div
               v-if="dropdown"
@@ -304,7 +297,6 @@
             >
               <div class="menu">
                 <div v-if="user" class="menu-name">
-                  <!-- <img width="50px" height="50px" :src="user.photoUrl" /> -->
                   <span v-if="user.displayName" class="menu-name-person">
                     {{ user.displayName }}
                   </span>
@@ -353,30 +345,25 @@
           </transition>
         </button>
 
-        <!-- ログイン -->
-        <!-- <nuxt-link
-
-          flat
-          to="/auth/login"
-        >
-          ログイン
-        </nuxt-link> -->
         <div class="py-2.5">
-          <span v-if="user">{{ user }}</span>
-          <span class="cursor-pointer" @click="logout"> >ログアウト </span>
-          <span class="cursor-pointer" @click="modal = !modal"> ログイン </span>
+          <span v-if="user.displayName">{{ user.displayName }}</span>
+          <span v-if="user" class="cursor-pointer" @click="logout">
+            >ログアウト
+          </span>
+          <div v-if="!user" class="cursor-pointer">
+            <FacebookLogin />
+          </div>
+          <!-- <span @click="modal = !modal">aaa</span>
           <ReModal v-if="modal" @close="modal = !modal">
             <template slot="header">Welcome To Reshelf！</template>
-            <!-- default -->
             <div class="w-full flex flex-col justify-center">
               <FacebookLogin />
             </div>
-            <!-- /default -->
             <template slot="footer">
               ※
               Reshelfでは、多重アカウントを防止するため、Facebookでのアカウント作成をお願いしています。
             </template>
-          </ReModal>
+          </ReModal> -->
         </div>
       </div>
     </div>
@@ -387,13 +374,13 @@
 import { getAuth, signOut } from 'firebase/auth'
 
 import ReButton from '@/components/atoms/ReButton'
-import ReModal from '@/components/atoms/ReModal'
+// import ReModal from '@/components/atoms/ReModal'
 import FacebookLogin from '../../atoms/auth/FacebookLogin.vue'
 
 export default {
   components: {
     ReButton,
-    ReModal,
+    // ReModal,
     FacebookLogin,
   },
   data() {
