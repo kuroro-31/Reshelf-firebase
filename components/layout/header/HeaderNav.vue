@@ -293,7 +293,7 @@
             class="dropdown-img"
             width="40px"
             height="40px"
-            :src="userImg"
+            :src="user.photoUrl"
           />
           <transition>
             <div
@@ -304,7 +304,7 @@
             >
               <div class="menu">
                 <div v-if="user" class="menu-name">
-                  <img width="50px" height="50px" :src="userImg" />
+                  <!-- <img width="50px" height="50px" :src="user.photoUrl" /> -->
                   <span v-if="user.displayName" class="menu-name-person">
                     {{ user.displayName }}
                   </span>
@@ -439,15 +439,6 @@ export default {
           // An error happened.
           console.error(error)
         })
-    },
-  },
-  computed: {
-    userImg() {
-      const auth = getAuth()
-      return (
-        auth.getCurrentUser().getPhotoUrl() +
-        '?access_token=<facebook_access_token>'
-      )
     },
   },
 }
