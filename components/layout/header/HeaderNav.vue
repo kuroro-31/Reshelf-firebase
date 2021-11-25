@@ -405,7 +405,7 @@ export default {
 
       user: {
         id: null,
-        name: 'aaa',
+        name: '',
       },
     }
   },
