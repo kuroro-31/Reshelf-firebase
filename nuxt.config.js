@@ -113,6 +113,7 @@ export default {
     '@nuxtjs/tailwindcss',
     '@nuxtjs/style-resources',
     '@nuxtjs/color-mode',
+    'nuxt-vite',
   ],
 
   axios: {
