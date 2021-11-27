@@ -372,7 +372,8 @@
 </template>
 
 <script>
-import myMixin from '@/mixins/firebase.js'
+import { getAuth, signOut } from 'firebase/auth'
+
 import ReButton from '@/components/atoms/ReButton'
 // import ReModal from '@/components/atoms/ReModal'
 import FacebookLogin from '../../atoms/auth/FacebookLogin.vue'
@@ -383,7 +384,6 @@ export default {
     // ReModal,
     FacebookLogin,
   },
-  mixins: [myMixin],
   data() {
     return {
       visible: false,
@@ -410,6 +410,31 @@ export default {
         name: '',
       },
     }
+  },
+  mounted() {
+    const auth = getAuth()
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.isLogined = true
+        this.user.name = user.displayName
+      } else {
+        this.isLogined = false
+      }
+    })
+  },
+  methods: {
+    logout() {
+      const auth = getAuth()
+      signOut(auth)
+        .then(() => {
+          // this.$router.push({ path: '/' })
+          location.reload('/')
+        })
+        .catch((error) => {
+          // An error happened.
+          console.error(error)
+        })
+    },
   },
 }
 </script>
