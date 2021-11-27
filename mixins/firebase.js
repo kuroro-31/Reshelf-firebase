@@ -1,5 +1,6 @@
+import { auth } from '@/plugins/firebase.js'
 import { getAuth, signOut } from 'firebase/auth'
-const auth = getAuth()
+// const auth = getAuth()
 
 export default {
   computed: {},
