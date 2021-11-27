@@ -94,7 +94,7 @@ export default {
     '~/plugins/i18n.js',
     // '~/plugins/lodash.js',
     '~/plugins/vue-highlightjs',
-    // '~/mixins/firebase.js',
+    '~/plugins/firebase.js',
   ],
   vendor: [
     'vue-i18n', // i18n
