@@ -297,8 +297,8 @@
             >
               <div class="menu">
                 <div class="menu-name">
-                  <span v-if="user.displayName" class="menu-name-person">
-                    {{ user.displayName }}
+                  <span v-if="user.name" class="menu-name-person">
+                    {{ user.name }}
                   </span>
                 </div>
                 <div class="menu-me">
@@ -346,7 +346,7 @@
         </button>
 
         <div class="py-2.5">
-          <span v-if="user.displayName">{{ user.displayName }}</span>
+          <span v-if="user.name">{{ user.name }}</span>
           <span v-if="user" class="cursor-pointer" @click="logout">
             ログアウト
           </span>
