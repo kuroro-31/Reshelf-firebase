@@ -284,6 +284,7 @@
 
         <!-- ユーザードロップダウン -->
         <button
+          v-if="user.name"
           class="dropdown"
           @mouseover="dropdown = true"
           @mouseleave="dropdown = false"
@@ -347,10 +348,10 @@
 
         <div class="py-2.5">
           <span v-if="user.name">{{ user.name }}</span>
-          <span v-if="user" class="cursor-pointer" @click="logout">
+          <span v-if="user.name" class="cursor-pointer" @click="logout">
             ログアウト
           </span>
-          <div v-if="!user" class="cursor-pointer">
+          <div v-if="!user.name" class="cursor-pointer">
             <FacebookLogin />
           </div>
           <!-- <span @click="modal = !modal">aaa</span>
