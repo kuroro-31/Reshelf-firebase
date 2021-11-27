@@ -53,7 +53,7 @@
       <div class="nav-right">
         <input type="text" class="search" placeholder="Search..." />
 
-        <form @submit.prevent="create">
+        <form v-if="isLogined" @submit.prevent="create">
           <re-button class="re-button re-button-small no-shadow">
             <button
               class="re-button-primary-border bg-secondary"

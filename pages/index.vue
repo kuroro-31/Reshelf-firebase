@@ -2,8 +2,7 @@
   <div class="w-full mx-auto flex flex-col scroll-none">
     <HeaderNav />
 
-    <!--  -->
-    <div class="hero">
+    <div v-if="!isLogined" class="hero">
       <div class="flex lg:w-1/2 justify-center h-full items-center">
         <div class="flex flex-col">
           <h2 class="title">
@@ -533,6 +532,7 @@
 </template>
 <script>
 import axios from 'axios'
+import { getAuth } from 'firebase/auth'
 
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
@@ -552,10 +552,21 @@ export default {
     return {
       items: [],
       loading: false,
+      isLogined: false,
     }
   },
   mounted() {
     this.getApi()
+
+    const auth = getAuth()
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.isLogined = true
+        this.user.name = user.displayName
+      } else {
+        this.isLogined = false
+      }
+    })
   },
   methods: {
     async getApi() {
