@@ -4,25 +4,25 @@ import Sass from 'sass'
 
 require('dotenv').config()
 const {
-  FIREBASE_API_KEY,
-  FIREBASE_AUTH_DOMAIN,
-  FIREBASE_DATABASE_URL,
-  FIREBASE_PROJECT_ID,
-  FIREBASE_STORAGE_BUCKET,
-  FIREBASE_MESSSAGE_SENDER_ID,
-  FIREBASE_APP_ID,
-  FIREBASE_MEASUREMENT_ID,
+  // FIREBASE_API_KEY,
+  // FIREBASE_AUTH_DOMAIN,
+  // FIREBASE_DATABASE_URL,
+  // FIREBASE_PROJECT_ID,
+  // FIREBASE_STORAGE_BUCKET,
+  // FIREBASE_MESSSAGE_SENDER_ID,
+  // FIREBASE_APP_ID,
+  // FIREBASE_MEASUREMENT_ID,
 } = process.env
 export default {
   env: {
-    FIREBASE_API_KEY,
-    FIREBASE_AUTH_DOMAIN,
-    FIREBASE_DATABASE_URL,
-    FIREBASE_PROJECT_ID,
-    FIREBASE_STORAGE_BUCKET,
-    FIREBASE_MESSSAGE_SENDER_ID,
-    FIREBASE_APP_ID,
-    FIREBASE_MEASUREMENT_ID,
+    // FIREBASE_API_KEY,
+    // FIREBASE_AUTH_DOMAIN,
+    // FIREBASE_DATABASE_URL,
+    // FIREBASE_PROJECT_ID,
+    // FIREBASE_STORAGE_BUCKET,
+    // FIREBASE_MESSSAGE_SENDER_ID,
+    // FIREBASE_APP_ID,
+    // FIREBASE_MEASUREMENT_ID,
   },
   head: {
     title: 'Reshelf| アップデートするオンライン学習マーケットプレイス',
@@ -94,8 +94,7 @@ export default {
     '~/plugins/i18n.js',
     // '~/plugins/lodash.js',
     '~/plugins/vue-highlightjs',
-    { src: '~/plugins/firebase.js', mode: 'client' },
-    // '~/plugins/firebase.auth.js',
+    // '~/mixins/firebase.js',
   ],
   vendor: [
     'vue-i18n', // i18n
