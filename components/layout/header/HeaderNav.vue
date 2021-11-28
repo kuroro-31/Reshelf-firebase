@@ -337,8 +337,8 @@
 </template>
 
 <script>
-import { getAuth, signOut } from 'firebase/auth'
-
+// import { getAuth, signOut } from 'firebase/auth'
+import { firebaseUtil } from '@/mixins/firebaseUtil.js'
 import ReButton from '@/components/atoms/ReButton'
 import Logo from '@/components/atoms/Logo.vue'
 // import ReModal from '@/components/atoms/ReModal'
@@ -351,6 +351,7 @@ export default {
     // ReModal,
     FacebookLogin,
   },
+  mixins: [firebaseUtil],
   data() {
     return {
       visible: false,
@@ -371,37 +372,11 @@ export default {
       errors: {},
       alert: '',
 
-      isLogined: false,
       user: {
         id: null,
         name: '',
       },
     }
-  },
-  mounted() {
-    const auth = getAuth()
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        this.isLogined = true
-        this.user.name = user.displayName
-      } else {
-        this.isLogined = false
-      }
-    })
-  },
-  methods: {
-    logout() {
-      const auth = getAuth()
-      signOut(auth)
-        .then(() => {
-          // this.$router.push({ path: '/' })
-          location.reload('/')
-        })
-        .catch((error) => {
-          // An error happened.
-          console.error(error)
-        })
-    },
   },
 }
 </script>
