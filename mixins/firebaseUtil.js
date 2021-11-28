@@ -4,17 +4,21 @@ import { getAuth, signOut } from 'firebase/auth'
 export const firebaseAuth = {
   data() {
     return {
-      isLogined: false,
+      is_fb_authed: false,
+      fb_user: {
+        id: null,
+        name: '',
+      },
     }
   },
   mounted() {
     const auth = getAuth()
     auth.onAuthStateChanged((user) => {
       if (user) {
-        this.isLogined = true
-        this.user.name = user.displayName
+        this.is_fb_authed = true
+        this.fb_user.name = user.displayName
       } else {
-        this.isLogined = false
+        this.is_fb_authed = false
       }
     })
   },

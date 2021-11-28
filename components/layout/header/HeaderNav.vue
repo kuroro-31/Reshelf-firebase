@@ -12,7 +12,7 @@
       <div class="nav-right">
         <input type="text" class="search" placeholder="Search..." />
 
-        <form v-if="isLogined" @submit.prevent="create">
+        <form v-if="is_fb_authed" @submit.prevent="create">
           <re-button class="re-button re-button-small no-shadow">
             <button
               class="re-button-primary-border bg-secondary"
@@ -243,7 +243,7 @@
 
         <!-- ユーザードロップダウン -->
         <button
-          v-if="isLogined"
+          v-if="is_fb_authed"
           class="dropdown"
           @mouseover="dropdown = true"
           @mouseleave="dropdown = false"
@@ -258,14 +258,14 @@
               <div class="menu">
                 <div class="menu-name">
                   <div
-                    v-if="user.name"
+                    v-if="fb_user.name"
                     class="menu-name-person flex items-center"
                   >
                     <span
-                      :class="isLogined == true ? 'onrain' : 'offline'"
+                      :class="is_fb_authed == true ? 'onrain' : 'offline'"
                       class="rounded-full w-3 h-3 mr-2"
                     ></span>
-                    <span>{{ user.name }}</span>
+                    <span>{{ fb_user.name }}</span>
                   </div>
                 </div>
                 <div class="menu-me">
@@ -306,17 +306,17 @@
         </button>
 
         <div class="py-2.5">
-          <div v-if="user.name" class="flex items-center">
+          <div v-if="fb_user.name" class="flex items-center">
             <span
-              :class="isLogined == true ? 'onrain' : 'offline'"
+              :class="is_fb_authed == true ? 'onrain' : 'offline'"
               class="rounded-full w-3 h-3 mr-2"
             ></span>
-            <span>{{ user.name }}</span>
+            <span>{{ fb_user.name }}</span>
           </div>
-          <span v-if="isLogined" class="cursor-pointer" @click="logout">
+          <span v-if="is_fb_authed" class="cursor-pointer" @click="logout">
             ログアウト
           </span>
-          <div v-if="!isLogined" class="cursor-pointer">
+          <div v-if="!is_fb_authed" class="cursor-pointer">
             <FacebookLogin />
           </div>
           <!-- <span @click="modal = !modal">aaa</span>
@@ -337,7 +337,6 @@
 </template>
 
 <script>
-// import { getAuth, signOut } from 'firebase/auth'
 import { firebaseAuth } from '@/mixins/firebaseUtil.js'
 import ReButton from '@/components/atoms/ReButton'
 import Logo from '@/components/atoms/Logo.vue'
@@ -371,11 +370,6 @@ export default {
       },
       errors: {},
       alert: '',
-
-      user: {
-        id: null,
-        name: '',
-      },
     }
   },
 }

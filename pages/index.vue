@@ -2,7 +2,7 @@
   <div class="w-full mx-auto flex flex-col scroll-none">
     <HeaderNav />
 
-    <div v-if="!isLogined" class="hero">
+    <div v-if="!is_fb_authed" class="hero">
       <div class="flex lg:w-1/2 justify-center h-full items-center">
         <div class="flex flex-col">
           <h2 class="title">
@@ -549,7 +549,7 @@ export default {
     return {
       items: [],
       loading: false,
-      isLogined: false,
+      is_fb_authed: false,
     }
   },
   mounted() {
@@ -558,10 +558,10 @@ export default {
     const auth = getAuth()
     auth.onAuthStateChanged((user) => {
       if (user) {
-        this.isLogined = true
-        this.user.name = user.displayName
+        this.is_fb_authed = true
+        this.fb_user.name = user.displayName
       } else {
-        this.isLogined = false
+        this.is_fb_authed = false
       }
     })
   },
