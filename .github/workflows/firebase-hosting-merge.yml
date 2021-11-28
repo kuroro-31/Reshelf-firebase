@@ -34,15 +34,15 @@ jobs:
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
-      - name: Cloud Functionのビルド
-        run: npm ci --prefix functions && npm run build --prefix functions
+      # - name: Cloud Functionのビルド
+      #   run: npm ci --prefix functions && npm run build --prefix functions
 
-      - name: Cloud Functionのデプロイ
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only functions --project=${{ secrets.FIREBASE_PROJECT_ID }}
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      # - name: Cloud Functionのデプロイ
+      #   uses: w9jds/firebase-action@master
+      #   with:
+      #     args: deploy --only functions --project=${{ secrets.FIREBASE_PROJECT_ID }}
+      #   env:
+      #     FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 # jobs:
 #   build_and_deploy:
 #     runs-on: ubuntu-latest
