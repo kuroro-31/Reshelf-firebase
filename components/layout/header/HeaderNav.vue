@@ -305,7 +305,7 @@
           </transition>
         </button>
 
-        <div class="py-2.5">
+        <div class="py-2.5 flex items-center">
           <div v-if="fb_user.name" class="flex items-center">
             <span
               :class="is_fb_authed == true ? 'onrain' : 'offline'"
