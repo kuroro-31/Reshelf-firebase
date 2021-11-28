@@ -272,9 +272,6 @@
 
     <!-- 学習分野 -->
     <div>
-      <div class="field bg-primary">
-        <h3>学習分野</h3>
-      </div>
       <div class="my-12 w-full">
         <div class="container w-full mx-auto flex justify-center">
           <div class="box box-aca primary-color">
