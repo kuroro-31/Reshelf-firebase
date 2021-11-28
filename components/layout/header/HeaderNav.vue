@@ -333,13 +333,6 @@
                   </nuxt-link>
                 </div> -->
                 <div class="menu-me">
-                  <div class="">
-                    <select v-model="$colorMode.preference">
-                      <option value="system">System</option>
-                      <option value="light">Light</option>
-                      <option value="dark">Dark</option>
-                    </select>
-                  </div>
                   <span class="menu-me-title">共通</span>
                   <nuxt-link class="menu-me-link" to="/user/setting">
                     アカウント設定
