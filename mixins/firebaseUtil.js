@@ -1,6 +1,7 @@
 import { getAuth, signOut } from 'firebase/auth'
 
-export const firebaseUtil = {
+// 認証
+export const firebaseAuth = {
   data() {
     return {
       isLogined: false,
@@ -31,6 +32,14 @@ export const firebaseUtil = {
         })
     },
   },
+  computed: {},
+  created() {},
+}
+
+export const firebase = {
+  data() {},
+  mounted() {},
+  methods: {},
   computed: {},
   created() {},
 }

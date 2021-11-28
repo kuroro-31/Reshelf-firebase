@@ -338,7 +338,7 @@
 
 <script>
 // import { getAuth, signOut } from 'firebase/auth'
-import { firebaseUtil } from '@/mixins/firebaseUtil.js'
+import { firebaseAuth } from '@/mixins/firebaseUtil.js'
 import ReButton from '@/components/atoms/ReButton'
 import Logo from '@/components/atoms/Logo.vue'
 // import ReModal from '@/components/atoms/ReModal'
@@ -351,7 +351,7 @@ export default {
     // ReModal,
     FacebookLogin,
   },
-  mixins: [firebaseUtil],
+  mixins: [firebaseAuth],
   data() {
     return {
       visible: false,
