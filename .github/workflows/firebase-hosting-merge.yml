@@ -12,11 +12,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm ci && npm run build
+
       - name: Create .env file
-        run: ${{ secrets.ENV_PROD }}
+        run: echo "${{ secrets.ENV_PROD }}" > .env
+
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_TOKEN }}
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_RESHELF_NUXT_APP }}'
           channelId: live
-          projectId: ${{ secrets.FIREBASE_PROJECT_ID_PROD }}
+          projectId: reshelf-nuxt-app
