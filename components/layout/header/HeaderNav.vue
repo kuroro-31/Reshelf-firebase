@@ -356,7 +356,7 @@
         <div class="py-2.5">
           <div v-if="user.name" class="flex items-center">
             <span
-              :class="onrain ? isLogined : offline"
+              :class="isLogined == true ? 'onrain' : 'offline'"
               class="rounded-full w-3 h-3 mr-2"
             ></span>
             <span>{{ user.name }}</span>
