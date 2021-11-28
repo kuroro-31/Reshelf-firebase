@@ -13,12 +13,10 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm ci && npm run build
       - name: Create .env file
-        run: echo "${{ secrets.ENV_PROD }}" > .env
-        # ↑ Secrets に定義した「ENV_PROD」の文字列の内容で「.env」というファイルを作成する
-        # 下記の「env:」に定義してしまうと echo の結果が「***」となってしまうので、直書きする必要がある
+        run: ${{ secrets.ENV_PROD }}
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: echo '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: echo '${{ secrets.FIREBASE_TOKEN }}'
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_TOKEN }}
           channelId: live
-          projectId: echo '${{ secrets.FIREBASE_PROJECT_ID_PROD }}'
+          projectId: ${{ secrets.FIREBASE_PROJECT_ID_PROD }}
