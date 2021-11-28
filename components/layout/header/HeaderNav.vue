@@ -298,9 +298,16 @@
             >
               <div class="menu">
                 <div class="menu-name">
-                  <span v-if="user.name" class="menu-name-person">
-                    {{ user.name }}
-                  </span>
+                  <div
+                    v-if="user.name"
+                    class="menu-name-person flex items-center"
+                  >
+                    <span
+                      :class="onrain ? isLogined : offline"
+                      class="rounded-full w-3 h-3 mr-2"
+                    ></span>
+                    <span>{{ user.name }}</span>
+                  </div>
                 </div>
                 <div class="menu-me">
                   <span class="menu-me-title">受講生</span>
@@ -347,7 +354,13 @@
         </button>
 
         <div class="py-2.5">
-          <span v-if="user.name">{{ user.name }}</span>
+          <div v-if="user.name" class="flex items-center">
+            <span
+              :class="onrain ? isLogined : offline"
+              class="rounded-full w-3 h-3 mr-2"
+            ></span>
+            <span>{{ user.name }}</span>
+          </div>
           <span v-if="isLogined" class="cursor-pointer" @click="logout">
             ログアウト
           </span>

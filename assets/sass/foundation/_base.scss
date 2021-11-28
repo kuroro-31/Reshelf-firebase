@@ -9,10 +9,10 @@
   //   system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
   //   MyYuGothicM, YuGothic, 'Hiragino Kaku Gothic ProN', Meiryo;
 
-  font-family: 'Montserrat', sans-serif, 'Noto Sans Japanese', -apple-system,
-    system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
-   MyYuGothicM, YuGothic, 'Hiragino Kaku Gothic ProN', Meiryo !important;
-
+  // font-family: 'Montserrat', sans-serif, 'Noto Sans Japanese', -apple-system,
+  //   system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+  //  MyYuGothicM, YuGothic, 'Hiragino Kaku Gothic ProN', Meiryo !important;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   // font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
@@ -107,4 +107,11 @@ h1,h2,h3,h4,h5,h6 {
     // background: var(--light-primary);
     // border: 1px solid #CDD7EE;
   }
+}
+
+.onrain {
+  background: #10d4a0;
+}
+.offline {
+  background: #9f9f9f;
 }
