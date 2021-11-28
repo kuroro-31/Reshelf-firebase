@@ -40,51 +40,14 @@
         </div>
         <div class="login-content">
           <div class="bg-white shadow w-full divide-y divide-gray-200">
-            <form class="px-5 py-7" @submit.prevent="login">
-              <!-- メールアドレス -->
-              <label class="font-semibold text-xs text-gray-600 pb-1 block">
-                E-mail
-              </label>
-              <input
-                v-model.trim="auth.email"
-                type="email"
-                placeholder="Enter email"
-                autofocus
-                class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-              />
-              <small v-if="errors.email" class="form-text text-danger">
-                {{ errors.email[0] }}
-              </small>
-
-              <!-- パスワード -->
-              <label class="font-semibold text-xs text-gray-600 pb-1 block">
-                Password
-              </label>
-              <input
-                v-model.trim="auth.password"
-                type="password"
-                placeholder="Password"
-                class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-              />
-              <small v-if="errors.password" class="form-text text-danger">
-                {{ errors.password[0] }}
-              </small>
-
-              <!-- ログインボタン -->
-              <re-button class="re-button re-button-small">
-                <button
-                  type="submit"
-                  class="re-button-primary-filled bg-primary"
-                >
-                  Login
-                </button>
-              </re-button>
-            </form>
+            <div class="px-5 py-7 w-full mx-auto flex justify-center">
+              <FacebookLogin class="w-full mx-auto" />
+            </div>
 
             <div class="py-5">
               <div class="grid grid-cols-2 gap-1">
                 <div class="text-center sm:text-left whitespace-nowrap">
-                  <button
+                  <nuxt-link
                     class="
                       transition
                       duration-200
@@ -104,6 +67,7 @@
                       focus:ring-opacity-50
                       ring-inset
                     "
+                    to="/"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -116,11 +80,11 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18"
                       />
                     </svg>
-                    <span class="inline-block ml-1">Forgot Password</span>
-                  </button>
+                    <span class="inline-block ml-1">Back to your-app.com</span>
+                  </nuxt-link>
                 </div>
                 <div class="text-center sm:text-right whitespace-nowrap">
                   <button
@@ -164,50 +128,6 @@
               </div>
             </div>
           </div>
-          <div class="py-5 bg-white">
-            <div class="grid grid-cols-2 gap-1">
-              <div class="text-center sm:text-left whitespace-nowrap">
-                <nuxt-link
-                  class="
-                    transition
-                    duration-200
-                    mx-5
-                    px-5
-                    py-4
-                    cursor-pointer
-                    font-normal
-                    text-xs
-                    rounded
-                    text-gray-500
-                    hover:bg-gray-200
-                    focus:outline-none
-                    focus:bg-gray-300
-                    focus:ring-2
-                    focus:ring-gray-400
-                    focus:ring-opacity-50
-                    ring-inset
-                  "
-                  to="/"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    class="w-4 h-4 inline-block align-text-top"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                    />
-                  </svg>
-                  <span class="inline-block ml-1">Back to your-app.com</span>
-                </nuxt-link>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -215,38 +135,15 @@
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex'
+import FacebookLogin from '@/components/atoms/auth/FacebookLogin.vue'
 export default {
-  components: {},
-  data: () => ({
-    auth: {
-      email: '',
-      password: '',
-    },
-    errors: {},
-  }),
-  methods: {
-    ...mapActions({
-      signIn: 'authenticate/login',
-    }),
-    login() {
-      // this.$axios.defaults.withCredentials = true
-      this.$nuxt.$loading.start()
-      // await this.$axios.get('/sanctum/csrf-cookie').then(async () => {
-      this.$axios
-        .post('/api/auth/login', this.auth)
-        .then(({ data }) => {
-          this.signIn()
-          this.$nuxt.$router.back()
-          // this.$nuxt.$router.push({ path: '/' })
-        })
-        .catch(({ response: { data } }) => {
-          alert(data.message)
-        })
-      // })
-      this.$nuxt.$loading.finish()
-    },
+  components: {
+    FacebookLogin,
   },
+  data() {
+    return {}
+  },
+  methods: {},
 }
 </script>
 <style lang="scss" scoped>
