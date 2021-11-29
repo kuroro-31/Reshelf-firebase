@@ -69,7 +69,6 @@ export default {
   css: [
     'ress',
     { src: '@/assets/sass/app.scss', lang: 'scss' },
-    'boxicons/css/boxicons.min.css',
     {
       src: '~/node_modules/highlight.js/styles/tomorrow-night-bright.css',
       lang: 'css',
