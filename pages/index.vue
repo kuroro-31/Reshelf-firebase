@@ -6,13 +6,13 @@
       <div class="flex lg:w-1/2 justify-center h-full items-center">
         <div class="flex flex-col">
           <h2 class="title">
-            あなたの学習が
+            最新で最高の
             <br />
-            たったの3分から。
+            Learning Global Market
           </h2>
           <span class="describe">
-            Reshelfは、プログラミング学習教材のマーケットプレイスです。
-            受講者による教材評価から教材を循環し、専門知識のある講師と受講者をつなぐプラットホームを体験できます。
+            Reshelfは、プログラミング学習教材のグローバルマーケットプレイスです。
+            高評価の教材を循環させるシステムで安全・安心なプラットホームを実現します。
           </span>
           <nuxt-link to="/auth/login">
             <re-button class="re-button">
@@ -614,10 +614,10 @@ export default {
   text-align: left;
 }
 .describe {
-  @apply inline-block text-lg font-semibold mb-8;
-  color: var(--sub-color);
-  height: 67px;
-  line-height: 24px;
+  @apply inline-block mb-8;
+  color: var(--color);
+  // height: 67px;
+  line-height: 21px;
   text-align: left;
 }
 .btn {
