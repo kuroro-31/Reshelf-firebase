@@ -9,7 +9,7 @@ name: GithubにMergeしたらActionsでBuildしてFirebaseにDeploy
 
 env:
   # 環境変数にWebhookのURLを設定
-  SLACK_WEBHOOKS: ${{ secrets.SLACK_WEBHOOKS }}
+  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOKS }}
 
 # 実行するジョブ(一連の操作)の設定
 jobs:
