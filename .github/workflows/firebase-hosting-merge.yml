@@ -44,7 +44,7 @@ jobs:
         if: success()
         uses: rtCamp/action-slack-notify@v2.0.2
         env:
-          SLACK_ICON: https://firebase.google.com/images/brand-guidelines/logo_realtime-database.png?hl=ja
+          SLACK_ICON: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQffxLYsb_JiGeQLpCDfXT7e9cPDHRK6Ifd-02gt1ZWdmgQH2agVdBUtIZXfC-QzJ09C8&usqp=CAU
           SLACK_USERNAME: Github Actions Bot
           SLACK_CHANNEL: firebase-notice
           SLACK_TITLE: Success Deploy
@@ -56,7 +56,7 @@ jobs:
         # 失敗時のみ実行
         if: failure()
         env:
-          SLACK_ICON: https://firebase.google.com/images/brand-guidelines/logo_realtime-database.png?hl=ja
+          SLACK_ICON: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQffxLYsb_JiGeQLpCDfXT7e9cPDHRK6Ifd-02gt1ZWdmgQH2agVdBUtIZXfC-QzJ09C8&usqp=CAU
           SLACK_USERNAME: Github Actions Bot
           SLACK_CHANNEL: firebase-notice
           SLACK_TITLE: Failure Deploy
