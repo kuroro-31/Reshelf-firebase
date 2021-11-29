@@ -64,7 +64,7 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [],
   },
-  ssr: true,
+  ssr: false, // SPA
   components: true,
   css: [
     'ress',
