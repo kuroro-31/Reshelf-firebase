@@ -7,6 +7,10 @@ name: GithubにMergeしたらActionsでBuildしてFirebaseにDeploy
     branches:
       - master
 
+env:
+  # 環境変数にWebhookのURLを設定
+  SLACK_WEBHOOKS: ${{ secrets.SLACK_WEBHOOKS }}
+
 # 実行するジョブ(一連の操作)の設定
 jobs:
   build_and_deploy_prod:
@@ -33,6 +37,28 @@ jobs:
           args: deploy --only hosting --project=${{ secrets.FIREBASE_PROJECT_ID }}
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+
+      - name: Slack Notification on Success
+        # 成功時のみ実行
+        if: success()
+        uses: rtCamp/action-slack-notify@v2.0.2
+        env:
+          SLACK_CHANNEL: general
+          SLACK_TITLE: Success Deply
+          SLACK_COLOR: good
+          SLACK_MESSAGE: 成功したよ
+
+      - name: Slack Notification on Failure
+        uses: rtCamp/action-slack-notify@v2.0.2
+        # 失敗時のみ実行
+        if: failure()
+        env:
+          SLACK_CHANNEL: general
+          SLACK_TITLE: Failure Deply
+          SLACK_COLOR: danger
+          SLACK_MESSAGE: 失敗したよ
+
 
       # - name: Cloud Functionのビルド
       #   run: npm ci --prefix functions && npm run build --prefix functions
