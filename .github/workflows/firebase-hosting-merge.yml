@@ -35,7 +35,6 @@ jobs:
 
 
       - name: Slackに成功通知
-        # 成功時のみ実行
         if: success()
         uses: rtCamp/action-slack-notify@v2.0.2
         env:
@@ -48,7 +47,6 @@ jobs:
 
       - name: Slackに失敗通知
         uses: rtCamp/action-slack-notify@v2.0.2
-        # 失敗時のみ実行
         if: failure()
         env:
           SLACK_ICON: https://i.gyazo.com/94757e237ec409db29cf5baccaba3182.png
