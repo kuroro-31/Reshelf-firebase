@@ -607,14 +607,14 @@ export default {
   // }
 }
 .title {
-  @apply mb-2;
+  @apply mb-2 font-bold;
   color: var(--color);
   font-size: 60px;
-  line-height: 74px;
+  line-height: 63px;
   text-align: left;
 }
 .describe {
-  @apply inline-block text-xl font-semibold mb-8;
+  @apply inline-block text-lg font-semibold mb-8;
   color: var(--sub-color);
   height: 67px;
   line-height: 24px;
