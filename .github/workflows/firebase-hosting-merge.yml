@@ -39,25 +39,29 @@ jobs:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
 
-      - name: Slack Notification on Success
+      - name: Slackに成功通知
         # 成功時のみ実行
         if: success()
         uses: rtCamp/action-slack-notify@v2.0.2
         env:
-          SLACK_CHANNEL: general
-          SLACK_TITLE: Success Deply
+          SLACK_ICON: https://firebase.google.com/images/brand-guidelines/logo_realtime-database.png?hl=ja
+          SLACK_USERNAME: Github Actions Bot
+          SLACK_CHANNEL: firebase-notice
+          SLACK_TITLE: Success Deploy
           SLACK_COLOR: good
-          SLACK_MESSAGE: 成功したよ
+          SLACK_MESSAGE: firebaseへのデプロイが成功しました
 
-      - name: Slack Notification on Failure
+      - name: Slackに失敗通知
         uses: rtCamp/action-slack-notify@v2.0.2
         # 失敗時のみ実行
         if: failure()
         env:
-          SLACK_CHANNEL: general
-          SLACK_TITLE: Failure Deply
+          SLACK_ICON: https://firebase.google.com/images/brand-guidelines/logo_realtime-database.png?hl=ja
+          SLACK_USERNAME: Github Actions Bot
+          SLACK_CHANNEL: firebase-notice
+          SLACK_TITLE: Failure Deploy
           SLACK_COLOR: danger
-          SLACK_MESSAGE: 失敗したよ
+          SLACK_MESSAGE: firebaseへのデプロイが失敗しました
 
 
       # - name: Cloud Functionのビルド
