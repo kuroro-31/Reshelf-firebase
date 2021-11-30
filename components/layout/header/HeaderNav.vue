@@ -3,6 +3,7 @@
     <div class="nav-content">
       <NuxtLink to="/" class="nav-left py-2.5">
         <h1><Logo /></h1>
+        <input type="text" class="search ml-4" placeholder="Search..." />
       </NuxtLink>
 
       <div class="nav-center flex items-center py-2.5">
@@ -10,12 +11,10 @@
       </div>
 
       <div class="nav-right">
-        <input type="text" class="search" placeholder="Search..." />
-
         <form v-if="is_fb_authed" @submit.prevent="create">
           <re-button class="re-button re-button-small no-shadow">
             <button class="re-button-primary-border bg-secondary">
-              コースの作成
+              コースを作成
             </button>
           </re-button>
         </form>
@@ -293,18 +292,14 @@
                   </div>
                 </div>
                 <div class="menu-me">
-                  <span class="menu-me-title">受講生</span>
-                  <nuxt-link class="menu-me-link" to="/user/learning">
-                    受講中のコース
-                  </nuxt-link>
-                  <nuxt-link class="menu-me-link" to="/user/like">
-                    お気に入り
-                  </nuxt-link>
-                </div>
-                <div class="menu-me">
-                  <span class="menu-me-title">講師</span>
                   <nuxt-link class="menu-me-link" to="/teacher/course">
-                    ダッシュボード
+                    マイページ
+                  </nuxt-link>
+                  <nuxt-link class="menu-me-link" to="/user/learning">
+                    学習中のコース
+                  </nuxt-link>
+                  <nuxt-link class="menu-me-link" to="/user/setting">
+                    アカウント設定
                   </nuxt-link>
                 </div>
                 <!-- <div class="menu-me">
@@ -316,10 +311,6 @@
                   </nuxt-link>
                 </div> -->
                 <div class="menu-me">
-                  <span class="menu-me-title">共通</span>
-                  <nuxt-link class="menu-me-link" to="/user/setting">
-                    アカウント設定
-                  </nuxt-link>
                   <button class="menu-me-link" @click="logout">
                     ログアウト
                   </button>
@@ -494,21 +485,6 @@ export default {
     @apply pl-2 whitespace-nowrap;
   }
 }
-.fb-btn {
-  @apply py-2 px-4 text-white rounded-lg text-lg  duration-200;
-  background: #1976f2;
-  border: 1px solid #1976f2;
-
-  &:hover {
-    -webkit-box-shadow: 0 8px 25px -8px #1976f2;
-    box-shadow: 0 8px 25px -8px #1976f2;
-  }
-}
-.fb-btn-posted {
-  @apply py-3 px-4 text-white rounded-lg text-xl font-bold;
-  color: #1976f2;
-  border: 1px solid #1976f2;
-}
 .show {
   @apply block;
 }
@@ -563,10 +539,11 @@ export default {
 // }
 
 .search {
-  @apply px-4 py-2 rounded-lg;
+  @apply px-3 py-2 rounded;
   background-color: var(--bg-secondary);
   background-clip: padding-box;
   border: 1px solid var(--gray);
+  min-width: 200px;
 }
 
 .purple {
