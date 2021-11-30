@@ -1,5 +1,4 @@
 import { getAuth, signOut } from 'firebase/auth'
-const auth = getAuth()
 
 export const firebaseAuth = {
   data() {
@@ -13,6 +12,7 @@ export const firebaseAuth = {
     }
   },
   mounted() {
+    const auth = getAuth()
     auth.onAuthStateChanged((user) => {
       if (user !== null) {
         this.is_fb_authed = true
@@ -26,6 +26,7 @@ export const firebaseAuth = {
   },
   methods: {
     logout() {
+      const auth = getAuth()
       signOut(auth)
         .then(() => {
           this.$router.push({ path: '/' })
