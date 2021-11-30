@@ -25,7 +25,8 @@ export const firebaseAuth = {
       const auth = getAuth()
       signOut(auth)
         .then(() => {
-          location.reload('/') // spaだと変更が反映されないのでリロード
+          // location.reload('/') // spaだと変更が反映されないのでリロード
+          this.$router.push({ path: '/' })
         })
         .catch((error) => {
           console.error(error)
