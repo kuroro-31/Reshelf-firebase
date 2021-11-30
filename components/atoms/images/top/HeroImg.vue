@@ -251,11 +251,5 @@
   svg {
     @apply w-full h-full;
   }
-  // svg g path,
-  // svg g circle,
-  // svg g ellipse,
-  // svg path {
-  //   stroke: rgba(var(--primary));
-  // }
 }
 </style>
