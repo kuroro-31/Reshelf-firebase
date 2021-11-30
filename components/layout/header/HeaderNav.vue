@@ -277,7 +277,8 @@
           <img
             :src="fb_user.img"
             alt=""
-            class="h-6 w-6 rounded-full object-cover"
+            class="rounded-full object-cover"
+            style="width: 40px; height: 40px"
           />
           <transition>
             <div
