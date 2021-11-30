@@ -2,29 +2,7 @@
   <div class="w-full mx-auto flex flex-col scroll-none">
     <HeaderNav />
 
-    <div v-if="!is_fb_authed" class="hero">
-      <div class="flex lg:w-1/2 justify-center h-full items-center">
-        <div class="flex flex-col">
-          <h2 class="title">
-            最新で最高の
-            <br />
-            Learning Global Market
-          </h2>
-          <span class="describe">
-            Reshelfは、プログラミング学習教材のグローバルマーケットプレイスです。
-            高評価の教材を循環させるシステムで安全・安心なプラットホームを実現します。
-          </span>
-          <nuxt-link to="/auth/login">
-            <re-button class="re-button">
-              <button type="submit" class="re-button-primary-filled bg-primary">
-                新規登録・ログイン
-              </button>
-            </re-button>
-          </nuxt-link>
-        </div>
-      </div>
-      <HeroImg />
-    </div>
+    <HeroItem />
 
     <!-- 学習分野 -->
     <div>
@@ -285,43 +263,34 @@
 </template>
 <script>
 import axios from 'axios'
-import { getAuth } from 'firebase/auth'
+import { firebaseAuth } from '@/mixins/firebaseUtil.js'
 
+// pages
+import HeroItem from '@/components/pages/top/HeroItem'
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
 import FooterNav from '@/components/layout/FooterNav'
 // atoms
 import AllItem from '@/components/atoms/item/AllItem'
-import ReButton from '@/components/atoms/ReButton.vue'
-import HeroImg from '@/components/atoms/images/top/HeroImg'
+// import ReButton from '@/components/atoms/ReButton.vue'
 
 export default {
   components: {
     HeaderNav,
     FooterNav,
     AllItem,
-    ReButton,
-    HeroImg,
+    // ReButton,
+    HeroItem,
   },
+  mixins: [firebaseAuth],
   data() {
     return {
       items: [],
       loading: false,
-      is_fb_authed: false,
     }
   },
   mounted() {
     this.getApi()
-
-    const auth = getAuth()
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        this.is_fb_authed = true
-        this.fb_user.name = user.displayName
-      } else {
-        this.is_fb_authed = false
-      }
-    })
   },
   methods: {
     async getApi() {
@@ -346,36 +315,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.hero {
-  @apply w-full flex items-center mx-auto;
-  background: var(--bg-secondary);
-  max-height: calc(100vh - 65px);
-  padding: 6.7% 0 6.7% 6.7%;
-}
-.title {
-  @apply mb-2 font-bold;
-  color: var(--color);
-  font-size: 60px;
-  line-height: 63px;
-  text-align: left;
-}
-.describe {
-  @apply inline-block mb-8;
-  color: var(--color);
-  // height: 67px;
-  line-height: 21px;
-  text-align: left;
-}
-.btn {
-  @apply flex items-center justify-center font-bold duration-200 rounded-lg;
-  width: 160px;
-  height: 45px;
-  color: var(--bg-secondary);
-  background: rgba(var(--primary));
-  &:hover {
-    @apply shadow-lg;
-  }
-}
 .box {
   @apply block flex flex-col items-center justify-center;
   width: 200px;

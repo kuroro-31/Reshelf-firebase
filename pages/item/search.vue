@@ -24,7 +24,7 @@ import HeaderNav from '@/components/layout/header/HeaderNav'
 import FooterNav from '@/components/layout/FooterNav'
 import SidebarSearch from '@/components/layout/sidebar/SidebarSearch'
 // atoms
-// import HeroItem from '@/components/atoms/item/HeroItem'
+// import HeroItem from '@/components/pages/top/HeroItem'
 import AllItem from '@/components/atoms/item/AllItem'
 
 export default {

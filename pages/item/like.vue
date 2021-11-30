@@ -20,7 +20,7 @@
 // import FooterNav from '@/components/layout/FooterNav'
 import SidebarDetail from '@/components/layout/sidebar/item/SidebarDetail'
 // atoms
-import HeroItem from '@/components/atoms/item/HeroItem'
+import HeroItem from '@/components/pages/top/HeroItem'
 import DetailItem from '@/components/atoms/item/DetailItem'
 
 export default {
