@@ -20,6 +20,7 @@
   </div>
 </template>
 <script>
+import { firebaseAuth } from '@/mixins/firebaseUtil.js'
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
 import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
@@ -36,7 +37,7 @@ export default {
     SidebarStudent,
     LearningItem,
   },
-
+  mixins: [firebaseAuth],
   data() {
     return {
       items: [
