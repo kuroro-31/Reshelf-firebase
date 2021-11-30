@@ -71,7 +71,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .main {
-  @apply w-full flex max-w-screen-lg mx-auto container;
+  @apply w-full flex max-w-screen-xl mx-auto container;
   margin-top: -420px;
 }
 .side-nav {
