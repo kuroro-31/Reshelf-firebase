@@ -308,7 +308,7 @@ export default {
           // this.$nuxt.$loading.finish()
         })
         .catch((err) => {
-          alert(err)
+          console.log(err)
         })
     },
   },
