@@ -284,10 +284,7 @@
             >
               <div class="menu">
                 <div class="menu-name">
-                  <div
-                    v-if="fb_user.email"
-                    class="menu-name-person flex items-center"
-                  >
+                  <div v-if="fb_user.email" class="flex items-center">
                     <span
                       :class="is_fb_authed == true ? 'onrain' : 'offline'"
                       class="rounded-full w-3 h-3 mr-2"
@@ -529,10 +526,6 @@ export default {
   &-name {
     @apply flex items-center p-4;
     border-bottom: 1px solid #ccc;
-    &-person {
-      @apply ml-2;
-      max-width: 140px;
-    }
   }
   &-me {
     @apply flex flex-col items-start p-3;
