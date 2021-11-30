@@ -292,7 +292,8 @@ import HeaderNav from '@/components/layout/header/HeaderNav'
 import FooterNav from '@/components/layout/FooterNav'
 // atoms
 import AllItem from '@/components/atoms/item/AllItem'
-import ReButton from '../components/atoms/ReButton.vue'
+import ReButton from '@/components/atoms/ReButton.vue'
+import HeroImg from '@/components/atoms/images/top/HeroImg'
 
 export default {
   components: {
@@ -300,6 +301,7 @@ export default {
     FooterNav,
     AllItem,
     ReButton,
+    HeroImg,
   },
   data() {
     return {
@@ -349,18 +351,6 @@ export default {
   background: var(--bg-secondary);
   max-height: calc(100vh - 65px);
   padding: 6.7% 0 6.7% 6.7%;
-}
-.main-img {
-  @apply w-1/2 h-full flex items-center;
-  svg {
-    @apply w-full h-full;
-  }
-  // svg g path,
-  // svg g circle,
-  // svg g ellipse,
-  // svg path {
-  //   stroke: rgba(var(--primary));
-  // }
 }
 .title {
   @apply mb-2 font-bold;
