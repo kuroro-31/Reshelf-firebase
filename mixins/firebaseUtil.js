@@ -6,6 +6,7 @@ export const firebaseAuth = {
       is_fb_authed: false,
       fb_user: {
         email: '',
+        img: '',
       },
     }
   },
@@ -15,6 +16,7 @@ export const firebaseAuth = {
       if (user) {
         this.is_fb_authed = true
         this.fb_user.email = user.email
+        this.fb_user.img = user.photoURL
       } else {
         this.is_fb_authed = false
       }
