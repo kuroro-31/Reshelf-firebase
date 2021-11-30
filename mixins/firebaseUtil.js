@@ -1,13 +1,11 @@
 import { getAuth, signOut } from 'firebase/auth'
 
-// 認証
 export const firebaseAuth = {
   data() {
     return {
       is_fb_authed: false,
       fb_user: {
-        id: null,
-        name: '',
+        email: '',
       },
     }
   },
@@ -16,7 +14,7 @@ export const firebaseAuth = {
     auth.onAuthStateChanged((user) => {
       if (user) {
         this.is_fb_authed = true
-        this.fb_user.name = user.displayName
+        this.fb_user.email = user.email
       } else {
         this.is_fb_authed = false
       }
@@ -27,17 +25,13 @@ export const firebaseAuth = {
       const auth = getAuth()
       signOut(auth)
         .then(() => {
-          // this.$router.push({ path: '/' })
-          location.reload('/')
+          location.reload('/') // spaだと変更が反映されないのでリロード
         })
         .catch((error) => {
-          // An error happened.
           console.error(error)
         })
     },
   },
-  computed: {},
-  created() {},
 }
 
 export const firebase = {

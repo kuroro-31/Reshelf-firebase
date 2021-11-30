@@ -271,14 +271,14 @@
               <div class="menu">
                 <div class="menu-name">
                   <div
-                    v-if="fb_user.name"
+                    v-if="fb_user.email"
                     class="menu-name-person flex items-center"
                   >
                     <span
                       :class="is_fb_authed == true ? 'onrain' : 'offline'"
                       class="rounded-full w-3 h-3 mr-2"
                     ></span>
-                    <span>{{ fb_user.name }}</span>
+                    <span>{{ fb_user.email }}</span>
                   </div>
                 </div>
                 <div class="menu-me">
@@ -319,12 +319,12 @@
         </button>
 
         <div class="py-2.5 flex items-center">
-          <div v-if="fb_user.name" class="flex items-center">
+          <div v-if="fb_user.email" class="flex items-center">
             <span
               :class="is_fb_authed == true ? 'onrain' : 'offline'"
               class="rounded-full w-3 h-3 mr-2"
             ></span>
-            <span>{{ fb_user.name }}</span>
+            <span>{{ fb_user.email }}</span>
           </div>
           <span v-if="is_fb_authed" class="cursor-pointer" @click="logout">
             ログアウト
