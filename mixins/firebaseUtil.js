@@ -1,20 +1,22 @@
 import { getAuth, signOut } from 'firebase/auth'
+const auth = getAuth()
 
 export const firebaseAuth = {
   data() {
     return {
       is_fb_authed: false,
       fb_user: {
+        name: '',
         email: '',
         img: '',
       },
     }
   },
   mounted() {
-    const auth = getAuth()
     auth.onAuthStateChanged((user) => {
-      if (user) {
+      if (user !== null) {
         this.is_fb_authed = true
+        this.fb_user.name = user.displayName
         this.fb_user.email = user.email
         this.fb_user.img = user.photoURL
       } else {
@@ -24,7 +26,6 @@ export const firebaseAuth = {
   },
   methods: {
     logout() {
-      const auth = getAuth()
       signOut(auth)
         .then(() => {
           this.$router.push({ path: '/' })
@@ -36,7 +37,7 @@ export const firebaseAuth = {
   },
 }
 
-export const firebase = {
+export const updateUser = {
   data() {},
   mounted() {},
   methods: {},
