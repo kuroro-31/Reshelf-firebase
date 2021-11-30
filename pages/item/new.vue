@@ -74,7 +74,7 @@ export default {
     HeaderNav,
     ReButton,
   },
-  middleware: 'authenticated',
+
   data() {
     return {
       post: {

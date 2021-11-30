@@ -98,7 +98,7 @@ export default {
     SidebarTac,
     SidebarQa,
   },
-  middleware: 'authenticated',
+
   data() {
     return {
       chapter: false,

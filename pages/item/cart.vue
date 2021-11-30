@@ -33,7 +33,7 @@ export default {
     CartItem,
     HeaderNav,
   },
-  middleware: 'authenticated',
+
   data() {
     return {
       items: [

@@ -84,7 +84,7 @@ export default {
     ArticleTagsInput,
     // AllItem,
   },
-  // middleware: 'authenticated',
+  //
   async asyncData({ $axios, params }) {
     const { data } = await $axios.$get(`/api/posts/${params.id}`)
     return { post: data }
