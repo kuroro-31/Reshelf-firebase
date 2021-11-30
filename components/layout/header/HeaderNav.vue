@@ -265,7 +265,7 @@
               :src="fb_user.img"
               alt=""
               class="rounded-full object-cover"
-              style="width: 40px; height: 40px"
+              style="width: 35px; height: 35px"
             />
           </template>
           <template v-else>
