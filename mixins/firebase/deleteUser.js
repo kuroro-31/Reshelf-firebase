@@ -1,5 +1,5 @@
 // =============
-// 退会処理
+// 退会
 // =============
 import { deleteUser, getAuth } from 'firebase/auth'
 

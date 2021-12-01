@@ -95,7 +95,9 @@
   </div>
 </template>
 <script>
-import { firebaseAuth, updateUser } from '@/mixins/firebaseUtil.js'
+import { firebaseAuth } from '@/mixins/firebaseUtil.js'
+import { updateUser } from '@/mixins/firebase/updateUser.js'
+
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
 // import FooterNav from '@/components/layout/FooterNav'
