@@ -8,7 +8,7 @@ export const updateUser = {
     }
   },
   watch: {
-    post: {
+    fb_user: {
       handler: _.debounce(function () {
         this.updateProfile()
       }, 2000), // memosのデータの更新が終わった2秒後に実行される
