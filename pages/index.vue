@@ -263,7 +263,7 @@
 </template>
 <script>
 import axios from 'axios'
-import { firebaseAuth } from '@/mixins/firebaseUtil.js'
+import { firebaseAuth } from '@/mixins/firebase/firebaseAuth.js'
 
 // pages
 import HeroItem from '@/components/pages/top/HeroItem'

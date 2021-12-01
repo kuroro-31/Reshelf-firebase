@@ -24,7 +24,7 @@
   </div>
 </template>
 <script>
-import { firebaseAuth } from '@/mixins/firebaseUtil.js'
+import { firebaseAuth } from '@/mixins/firebase/firebaseAuth.js'
 // atoms
 import HeroImg from '@/components/atoms/images/top/HeroImg'
 import ReButton from '@/components/atoms/ReButton.vue'

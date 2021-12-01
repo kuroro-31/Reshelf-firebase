@@ -329,7 +329,7 @@
 </template>
 
 <script>
-import { firebaseAuth } from '@/mixins/firebaseUtil.js'
+import { firebaseAuth } from '@/mixins/firebase/firebaseAuth.js'
 import ReButton from '@/components/atoms/ReButton'
 import Logo from '@/components/atoms/Logo.vue'
 // import ReModal from '@/components/atoms/ReModal'

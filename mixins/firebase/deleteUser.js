@@ -1,6 +1,3 @@
-// =============
-// 退会
-// =============
 import { deleteUser, getAuth } from 'firebase/auth'
 
 export const deleteUser = {

@@ -95,7 +95,7 @@
   </div>
 </template>
 <script>
-import { firebaseAuth } from '@/mixins/firebaseUtil.js'
+import { firebaseAuth } from '@/mixins/firebase/firebaseAuth.js'
 import { updateUser } from '@/mixins/firebase/updateUser.js'
 
 // layout

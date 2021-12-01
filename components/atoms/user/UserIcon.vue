@@ -27,7 +27,7 @@
   </div>
 </template>
 <script>
-import { firebaseAuth } from '@/mixins/firebaseUtil.js'
+import { firebaseAuth } from '@/mixins/firebase/firebaseAuth.js'
 export default {
   mixins: [firebaseAuth],
 }
