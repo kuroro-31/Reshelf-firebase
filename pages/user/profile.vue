@@ -17,7 +17,7 @@
               <div class="max-w-5xl mx-auto mb-12">
                 <div class="bg-white w-full rounded p-8 sm:p-12">
                   <form action="" method="post">
-                    <div class="md:flex items-center">
+                    <div v-if="fb_user.name" class="md:flex items-center">
                       <div class="w-full flex flex-col">
                         <label class="font-semibold leading-none">Name</label>
                         <input
@@ -37,7 +37,7 @@
                         />
                       </div>
                     </div>
-                    <div class="md:flex items-center mt-8">
+                    <div v-if="fb_user.email" class="md:flex items-center mt-8">
                       <div class="w-full flex flex-col">
                         <label class="font-semibold leading-none">Email</label>
                         <input
@@ -48,12 +48,13 @@
                             p-3
                             focus:outline-none focus:border-blue-700
                             mt-4
-                            bg-gray-100
+                            bg-gray-200
                             border
                             rounded
                             border-gray-200
                           "
                           :value="fb_user.email"
+                          disabled
                         />
                       </div>
                     </div>
