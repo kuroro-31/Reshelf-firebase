@@ -1,4 +1,4 @@
-import { getAuth, signOut } from 'firebase/auth'
+import { getAuth, signOut, updateProfile } from 'firebase/auth'
 
 export const firebaseAuth = {
   data() {
@@ -39,9 +39,34 @@ export const firebaseAuth = {
 }
 
 export const updateUser = {
-  data() {},
+  data() {
+    return {
+      fb_user: {
+        name: '',
+        img: '',
+      },
+    }
+  },
   mounted() {},
-  methods: {},
+  methods: {
+    updateProfile() {
+      const auth = getAuth()
+      updateProfile(auth.currentUser, {
+        displayName: this.fb_user.name,
+        photoURL: this.fb_user.img,
+      })
+        .then(() => {
+          // Profile updated!
+          // ...
+          alert('Profile updated!')
+        })
+        .catch((error) => {
+          // An error occurred
+          // ...
+          alert(error)
+        })
+    },
+  },
   computed: {},
   created() {},
 }

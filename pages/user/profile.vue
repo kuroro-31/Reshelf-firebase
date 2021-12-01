@@ -78,6 +78,7 @@
                           focus:ring-blue-700
                           focus:outline-none
                         "
+                        @click="updateProfile"
                       >
                         更新する
                       </button>
@@ -94,7 +95,7 @@
   </div>
 </template>
 <script>
-import { firebaseAuth } from '@/mixins/firebaseUtil.js'
+import { firebaseAuth, updateUser } from '@/mixins/firebaseUtil.js'
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
 // import FooterNav from '@/components/layout/FooterNav'
@@ -113,7 +114,7 @@ export default {
     SidebarStudent,
     // AllItem,
   },
-  mixins: [firebaseAuth],
+  mixins: [firebaseAuth, updateUser],
   data() {
     return {}
   },
