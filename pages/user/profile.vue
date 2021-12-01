@@ -24,6 +24,7 @@
                       <div class="w-full flex flex-col">
                         <label class="font-semibold leading-none">Name</label>
                         <input
+                          v-model="fb_user.name"
                           type="text"
                           class="
                             leading-none
@@ -36,7 +37,6 @@
                             rounded
                             border-gray-200
                           "
-                          :value="fb_user.name"
                         />
                       </div>
                     </div>
