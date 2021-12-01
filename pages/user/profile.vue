@@ -61,7 +61,7 @@
                         />
                       </div>
                     </div>
-                    <div class="">
+                    <div class="mt-4 text-right">
                       {{ alert }}
                     </div>
                   </form>
