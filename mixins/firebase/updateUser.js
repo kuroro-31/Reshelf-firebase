@@ -11,7 +11,7 @@ export const updateUser = {
     fb_user: {
       handler: _.debounce(function () {
         this.updateProfile()
-      }, 5000), // memosのデータの更新が終わった5秒後に実行される
+      }, 3000), // memosのデータの更新が終わった5秒後に実行される
       deep: true,
     },
   },
