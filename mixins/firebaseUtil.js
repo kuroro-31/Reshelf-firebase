@@ -58,12 +58,12 @@ export const updateUser = {
         .then(() => {
           // Profile updated!
           // ...
-          alert('Profile updated!')
+          console.log('Profile updated!')
         })
         .catch((error) => {
           // An error occurred
           // ...
-          alert(error)
+          console.log(error)
         })
     },
   },

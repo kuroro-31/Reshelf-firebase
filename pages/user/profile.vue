@@ -19,7 +19,7 @@
             <div class="w-full">
               <div class="max-w-5xl mx-auto mb-12">
                 <div class="bg-white w-full rounded p-8 sm:p-12">
-                  <form action="" method="post">
+                  <form @submit.prevent="updateProfile">
                     <div v-if="fb_user.name" class="md:flex items-center">
                       <div class="w-full flex flex-col">
                         <label class="font-semibold leading-none">Name</label>
@@ -63,6 +63,7 @@
                     </div>
                     <div class="flex items-center justify-center w-full">
                       <button
+                        type="submit"
                         class="
                           mt-9
                           font-semibold
@@ -78,7 +79,6 @@
                           focus:ring-blue-700
                           focus:outline-none
                         "
-                        @click="updateProfile"
                       >
                         更新する
                       </button>
