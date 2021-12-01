@@ -1,15 +1,6 @@
 import { getAuth, updateProfile } from 'firebase/auth'
 
 export const updateUser = {
-  // data() {
-  //   return {
-  //     fb_user: {
-  //       name: '',
-  //       img: '',
-  //     },
-  //   }
-  // },
-  mounted() {},
   methods: {
     updateProfile() {
       const auth = getAuth()
@@ -19,12 +10,10 @@ export const updateUser = {
       })
         .then(() => {
           // Profile updated!
-          // ...
           console.log('Profile updated!')
         })
         .catch((error) => {
           // An error occurred
-          // ...
           console.log(error)
         })
     },

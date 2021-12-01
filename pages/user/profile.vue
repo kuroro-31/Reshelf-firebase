@@ -20,7 +20,7 @@
               <div class="max-w-5xl mx-auto mb-12">
                 <div class="bg-white w-full rounded p-8 sm:p-12">
                   <form @submit.prevent="updateProfile">
-                    <div v-if="fb_user.name" class="md:flex items-center">
+                    <div class="md:flex items-center">
                       <div class="w-full flex flex-col">
                         <label class="font-semibold leading-none">Name</label>
                         <input
