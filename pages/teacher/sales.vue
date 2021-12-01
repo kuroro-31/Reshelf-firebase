@@ -1,5 +1,8 @@
-<template v-if="is_fb_authed">
-  <div class="w-full h-screen mx-auto flex flex-col scroll-none">
+<template>
+  <div
+    v-if="is_fb_authed"
+    class="w-full h-screen mx-auto flex flex-col scroll-none"
+  >
     <HeaderNav />
     <div class="w-full flex max-w-screen-xl mx-auto container scroll-none">
       <div class="lg:flex w-full">
