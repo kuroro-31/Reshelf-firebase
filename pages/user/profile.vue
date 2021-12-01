@@ -13,7 +13,75 @@
         <div class="main-body scroll-none">
           <div class="main-body-content">
             <h2 class="text-3xl font-bold mb-4">プロフィール編集</h2>
-            <!-- <all-item :items="items" /> -->
+            <div class="w-full">
+              <div class="max-w-5xl mx-auto mb-12">
+                <div class="bg-white w-full rounded p-8 sm:p-12">
+                  <form action="" method="post">
+                    <div class="md:flex items-center">
+                      <div class="w-full flex flex-col">
+                        <label class="font-semibold leading-none">Name</label>
+                        <input
+                          type="text"
+                          class="
+                            leading-none
+                            text-gray-900
+                            p-3
+                            focus:outline-none focus:border-blue-700
+                            mt-4
+                            bg-gray-100
+                            border
+                            rounded
+                            border-gray-200
+                          "
+                          :value="fb_user.name"
+                        />
+                      </div>
+                    </div>
+                    <div class="md:flex items-center mt-8">
+                      <div class="w-full flex flex-col">
+                        <label class="font-semibold leading-none">Email</label>
+                        <input
+                          type="text"
+                          class="
+                            leading-none
+                            text-gray-900
+                            p-3
+                            focus:outline-none focus:border-blue-700
+                            mt-4
+                            bg-gray-100
+                            border
+                            rounded
+                            border-gray-200
+                          "
+                          :value="fb_user.email"
+                        />
+                      </div>
+                    </div>
+                    <div class="flex items-center justify-center w-full">
+                      <button
+                        class="
+                          mt-9
+                          font-semibold
+                          leading-none
+                          text-white
+                          py-4
+                          px-10
+                          bg-blue-700
+                          rounded
+                          hover:bg-blue-600
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-blue-700
+                          focus:outline-none
+                        "
+                      >
+                        更新する
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
