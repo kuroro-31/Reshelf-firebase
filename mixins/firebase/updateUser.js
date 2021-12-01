@@ -1,14 +1,14 @@
 import { getAuth, updateProfile } from 'firebase/auth'
 
 export const updateUser = {
-  data() {
-    return {
-      fb_user: {
-        name: '',
-        img: '',
-      },
-    }
-  },
+  // data() {
+  //   return {
+  //     fb_user: {
+  //       name: '',
+  //       img: '',
+  //     },
+  //   }
+  // },
   mounted() {},
   methods: {
     updateProfile() {
