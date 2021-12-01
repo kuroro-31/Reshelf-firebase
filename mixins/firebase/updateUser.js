@@ -5,6 +5,7 @@ export const updateUser = {
   data() {
     return {
       alert: '',
+      thumbnail: '',
     }
   },
   watch: {
@@ -20,8 +21,9 @@ export const updateUser = {
       const auth = getAuth()
       updateProfile(auth.currentUser, {
         displayName: this.fb_user.name,
-        photoURL: this.fb_user.img,
+        photoURL: this.thumbnail,
       })
+
       this.alert = '保存中です...'
         .then(() => {
           location.reload()

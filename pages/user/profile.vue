@@ -40,7 +40,7 @@
                         />
                       </div>
                     </div>
-                    <div v-if="fb_user.email" class="md:flex items-center mt-8">
+                    <div class="md:flex items-center mt-8">
                       <div class="w-full flex flex-col">
                         <label class="font-semibold leading-none">Email</label>
                         <input
@@ -59,6 +59,13 @@
                           :value="fb_user.email"
                           disabled
                         />
+                      </div>
+                    </div>
+                    <div class="md:flex items-center mt-8">
+                      <div class="w-full flex flex-col">
+                        <label class="font-semibold leading-none">画像</label>
+                        <img :src="fb_user.img" alt="" />
+                        <input class="input" type="file" @change="changeImg" />
                       </div>
                     </div>
                     <div class="mt-4 text-right">
@@ -98,8 +105,18 @@ export default {
     // AllItem,
   },
   mixins: [firebaseAuth, updateUser],
-  data() {
-    return {}
+  data() {},
+  methods: {
+    changeImg(e) {
+      this.fb_user.img = e.target.files[0]
+      if (this.fb_user.img) {
+        const reader = new FileReader()
+        reader.readAsDataURL(this.fb_user.img)
+        reader.onload = () => {
+          this.thumbnail = reader.result + ''
+        }
+      }
+    },
   },
 }
 </script>
