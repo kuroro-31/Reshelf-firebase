@@ -2,7 +2,7 @@
   <nav class="nav">
     <div
       class="
-        max-w-screen-xl
+        max-w-screen-lg
         container
         w-full
         mx-auto
