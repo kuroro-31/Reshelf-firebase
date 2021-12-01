@@ -22,8 +22,8 @@ export const updateUser = {
         displayName: this.fb_user.name,
         photoURL: this.fb_user.img,
       })
+      this.alert = '保存中です...'
         .then(() => {
-          this.alert = '保存しました'
           location.reload()
         })
         .catch((error) => {
