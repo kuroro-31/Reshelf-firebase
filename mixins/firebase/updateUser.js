@@ -5,14 +5,13 @@ export const updateUser = {
   data() {
     return {
       alert: '',
-      thumbnail: '',
     }
   },
   watch: {
     fb_user: {
       handler: _.debounce(function () {
         this.updateProfile()
-      }, 3000), // memosのデータの更新が終わった3秒後に実行される
+      }, 3000), // memosのデータの更新が終わった5秒後に実行される
       deep: true,
     },
   },
@@ -21,10 +20,11 @@ export const updateUser = {
       const auth = getAuth()
       updateProfile(auth.currentUser, {
         displayName: this.fb_user.name,
-        // photoURL: this.fb_user.img,
+        photoURL: this.fb_user.img,
       })
+      this.alert = '保存中です...'
         .then(() => {
-          this.alert = '保存しました'
+          location.reload()
         })
         .catch((error) => {
           console.log(error)
