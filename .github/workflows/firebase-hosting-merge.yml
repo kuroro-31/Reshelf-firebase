@@ -1,8 +1,9 @@
-name: Mergeしたら Github Actionsで Firebaseに Build & Deployする
+name: Github Actionsで Firebaseに Build & Deploy
 'on':
   push:
     branches:
-      - master
+      # - master
+      - dev
 
 env:
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOKS }}
