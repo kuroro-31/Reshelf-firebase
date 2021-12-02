@@ -8,7 +8,7 @@
   </div>
 </template>
 <script>
-import { firebase, firestore, storage } from '~/plugins/firebase.js'
+import { firebase, db, storage } from '~/plugins/firebase.js'
 import { getAuth, FacebookAuthProvider, signInWithPopup } from 'firebase/auth'
 import ReButton from '@/components/atoms/ReButton'
 export default {
@@ -119,10 +119,10 @@ export default {
           })
       })
     },
-    // ⑤ 公開可能なユーザー情報をFirestoreに登録
+    // ⑤ 公開可能なユーザー情報をdbに登録
     setPublicUserData(userObject) {
       return new Promise((resolve, reject) => {
-        let publicUser = firestore.collection('users').doc(userObject.uid)
+        let publicUser = db.collection('users').doc(userObject.uid)
         // ** usersに登録するObjのみを登録する
         publicUser
           .set(this.createPublicObj(userObject), { merge: true })
@@ -131,12 +131,10 @@ export default {
           })
       })
     },
-    // ⑥ 非公開のユーザー情報をFirestoreに登録
+    // ⑥ 非公開のユーザー情報をdbに登録
     setPrivateUserData(userObject) {
       return new Promise((resolve, reject) => {
-        let privateUsers = firestore
-          .collection('privateUsers')
-          .doc(userObject.uid)
+        let privateUsers = db.collection('privateUsers').doc(userObject.uid)
         // privateUsersに登録するObjのみを登録する
         privateUsers
           .set(this.createPrivateObj(userObject), { merge: true })
@@ -148,7 +146,7 @@ export default {
     // ⑦ ローカルストレージに保持するユーザー情報を設定
     setLocalUserData(userObject) {
       return new Promise((resolve, reject) => {
-        let user = firestore.collection('users').doc(userObject.uid)
+        let user = db.collection('users').doc(userObject.uid)
         user
           .get()
           .then((doc) => {
@@ -176,7 +174,7 @@ export default {
           })
       })
     },
-    // ④ 取得したアイコンのURLをFirestorageに保存して、そのURLをFirestoreに登録する準備
+    // ④ 取得したアイコンのURLをFirestorageに保存して、そのURLをdbに登録する準備
     createPhotoURL(userObject) {
       return new Promise((resolve, reject) => {
         let url = userObject.photoURL
