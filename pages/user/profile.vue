@@ -98,8 +98,18 @@ export default {
     // AllItem,
   },
   mixins: [firebaseAuth, updateUser],
-  data() {
-    return {}
+  data() {},
+  methods: {
+    changeImg(e) {
+      this.fb_user.img = e.target.files[0]
+      if (this.fb_user.img) {
+        const reader = new FileReader()
+        reader.readAsDataURL(this.fb_user.img)
+        reader.onload = () => {
+          this.thumbnail = reader.result + ''
+        }
+      }
+    },
   },
 }
 </script>

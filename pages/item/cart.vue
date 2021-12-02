@@ -98,7 +98,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .main {
-  @apply w-full flex flex-col max-w-screen-xl mx-auto container mt-10;
+  @apply w-full flex flex-col max-w-screen-lg mx-auto container mt-10;
 }
 .title {
   @apply font-bold cursor-pointer text-3xl mb-4 pb-2;
