@@ -21,7 +21,7 @@ export const updateUser = {
       const auth = getAuth()
       updateProfile(auth.currentUser, {
         displayName: this.fb_user.name,
-        photoURL: this.fb_user.img,
+        // photoURL: this.fb_user.img,
       })
         .then(() => {
           this.alert = 'アップデートしました'

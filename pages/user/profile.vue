@@ -4,7 +4,7 @@
     class="w-full h-screen mx-auto flex flex-col scroll-none"
   >
     <HeaderNav />
-    <div class="w-full flex max-w-screen-xl mx-auto container scroll-none">
+    <div class="w-full flex max-w-screen-lg mx-auto container scroll-none">
       <div class="lg:flex w-full">
         <nav
           class="card side-nav lg:max-h-(screen-22) pin-22 scroll-none mb-auto"
@@ -40,7 +40,7 @@
                         />
                       </div>
                     </div>
-                    <div v-if="fb_user.email" class="md:flex items-center mt-8">
+                    <div class="md:flex items-center mt-8">
                       <div class="w-full flex flex-col">
                         <label class="font-semibold leading-none">Email</label>
                         <input
@@ -61,7 +61,7 @@
                         />
                       </div>
                     </div>
-                    <div class="">
+                    <div class="mt-4 text-right">
                       {{ alert }}
                     </div>
                   </form>
