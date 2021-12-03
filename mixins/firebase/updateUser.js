@@ -17,14 +17,15 @@ export const updateUser = {
   },
   methods: {
     updateProfile() {
+      this.alert = '保存中です...'
+
       const auth = getAuth()
       updateProfile(auth.currentUser, {
         displayName: this.fb_user.name,
         photoURL: this.fb_user.img,
       })
-      this.alert = '保存中です...'
         .then(() => {
-          location.reload()
+          this.alert = '保存しました'
         })
         .catch((error) => {
           console.log(error)

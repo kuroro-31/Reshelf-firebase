@@ -2,8 +2,8 @@ name: Github Actionsで Firebaseに Build & Deploy
 'on':
   push:
     branches:
-      # - master
-      - dev
+      - master
+      # - dev
 
 env:
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOKS }}
