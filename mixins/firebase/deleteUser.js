@@ -1,6 +1,6 @@
 import { deleteUser, getAuth } from 'firebase/auth'
 
-export const deleteUser = {
+export const deleteAccount = {
   methods: {
     deleteUser() {
       const auth = getAuth()

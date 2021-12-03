@@ -10,14 +10,7 @@
         <!-- 親カテゴリー -->
         <div
           :class="{ 'toggle-on': category.toggleOn }"
-          class="
-            cate-ttl
-            w-full
-            relative
-            inline-flex
-            justify-between
-            items-center
-          "
+          class="cate-ttl w-full relative inline-flex justify-between items-center"
           @click="category.toggleOn = !category.toggleOn"
         >
           <a href="#" class="title">

@@ -236,12 +236,7 @@
 
                   <re-button class="pt-4 re-button re-button-small">
                     <button
-                      class="
-                        re-button-primary-filled
-                        bg-primary
-                        ml-auto
-                        duration-500
-                      "
+                      class="re-button-primary-filled bg-primary ml-auto duration-500"
                       @click="modal = !modal"
                     >
                       Checkout
