@@ -18,10 +18,10 @@ const db = firebase.firestore()
 const storage = firebase.storage()
 const analytics = getAnalytics(firebase)
 // collection references
-const usersCollection = db.collection('users')
-const postsCollection = db.collection('posts')
-const commentsCollection = db.collection('comments')
-const likesCollection = db.collection('likes')
+// const usersCollection = db.collection('users')
+// const postsCollection = db.collection('posts')
+// const commentsCollection = db.collection('comments')
+// const likesCollection = db.collection('likes')
 
 // export utils/refs
 export {
@@ -29,8 +29,8 @@ export {
   auth,
   storage,
   analytics,
-  usersCollection,
-  postsCollection,
-  commentsCollection,
-  likesCollection,
+  // usersCollection,
+  // postsCollection,
+  // commentsCollection,
+  // likesCollection,
 }
