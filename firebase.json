@@ -6,14 +6,31 @@
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
-  "hosting": {
-    "public": "dist",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ]
-  },
+  "hosting": [
+    {
+      "target": "staging",
+      "public": "dist",
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "app"
+        }
+      ],
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    },
+    {
+      "target": "production",
+      "public": "dist",
+      "trailingSlash": false,
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/404.html"
+        }
+      ]
+    }
+  ],
   "storage": {
     "rules": "storage.rules"
   },

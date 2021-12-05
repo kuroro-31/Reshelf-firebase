@@ -14,10 +14,14 @@ start:
 	npm run start
 generate:
 	npm run generate
-release:
+unit:
 	@make build
 	@make generate
-	firebase deploy
+	firebase deploy --only hosting:staging
+production:
+	@make build
+	@make generate
+	firebase deploy --only hosting:production
 reset:
 	rm -rf node_modules
 	rm package-lock.json

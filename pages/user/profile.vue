@@ -106,18 +106,7 @@ export default {
   },
   mixins: [firebaseAuth, updateUser],
   data() {},
-  methods: {
-    changeImg(e) {
-      this.fb_user.img = e.target.files[0]
-      if (this.fb_user.img) {
-        const reader = new FileReader()
-        reader.readAsDataURL(this.fb_user.img)
-        reader.onload = () => {
-          this.thumbnail = reader.result + ''
-        }
-      }
-    },
-  },
+  methods: {},
 }
 </script>
 <style lang="scss" scoped>
