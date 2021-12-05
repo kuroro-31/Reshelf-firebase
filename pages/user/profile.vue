@@ -61,13 +61,6 @@
                         />
                       </div>
                     </div>
-                    <div class="md:flex items-center mt-8">
-                      <div class="w-full flex flex-col">
-                        <label class="font-semibold leading-none">画像</label>
-                        <img :src="fb_user.img" alt="" />
-                        <input class="input" type="file" @change="changeImg" />
-                      </div>
-                    </div>
                     <div class="mt-4 text-right">
                       {{ alert }}
                     </div>
@@ -105,8 +98,9 @@ export default {
     // AllItem,
   },
   mixins: [firebaseAuth, updateUser],
-  data() {},
-  methods: {},
+  data() {
+    return {}
+  },
 }
 </script>
 <style lang="scss" scoped>

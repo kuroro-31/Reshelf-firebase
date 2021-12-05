@@ -5,23 +5,24 @@ export const updateUser = {
   data() {
     return {
       alert: '',
-      thumbnail: '',
     }
   },
   watch: {
     fb_user: {
       handler: _.debounce(function () {
         this.updateProfile()
-      }, 3000), // memosのデータの更新が終わった3秒後に実行される
+      }, 3000), // memosのデータの更新が終わった5秒後に実行される
       deep: true,
     },
   },
   methods: {
     updateProfile() {
+      this.alert = '保存中です...'
+
       const auth = getAuth()
       updateProfile(auth.currentUser, {
         displayName: this.fb_user.name,
-        photoURL: this.thumbnail,
+        photoURL: this.fb_user.img,
       })
         .then(() => {
           this.alert = '保存しました'

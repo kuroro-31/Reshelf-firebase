@@ -1,5 +1,5 @@
 <template>
-  <div @click="facebookLogin">
+  <div @click="facebook">
     <re-button class="re-button">
       <button class="re-button-primary-filled bg-primary">
         Facebookで新規登録・ログイン

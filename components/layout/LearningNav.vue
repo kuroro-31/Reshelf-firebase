@@ -1,16 +1,7 @@
 <template>
   <nav class="nav">
     <div
-      class="
-        max-w-screen-lg
-        container
-        w-full
-        mx-auto
-        flex flex-wrap
-        items-center
-        justify-between
-        mt-0
-      "
+      class="max-w-screen-lg container w-full mx-auto flex flex-wrap items-center justify-between mt-0"
     >
       <div class="nav-left">
         <!-- <input id="side" type="checkbox" name="" value="" /> -->

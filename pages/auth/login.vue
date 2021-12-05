@@ -48,25 +48,7 @@
               <div class="grid grid-cols-2 gap-1">
                 <div class="text-center sm:text-left whitespace-nowrap">
                   <nuxt-link
-                    class="
-                      transition
-                      duration-200
-                      mx-5
-                      px-5
-                      py-4
-                      cursor-pointer
-                      font-normal
-                      text-xs
-                      rounded
-                      text-gray-500
-                      hover:bg-gray-100
-                      focus:outline-none
-                      focus:bg-gray-200
-                      focus:ring-2
-                      focus:ring-gray-400
-                      focus:ring-opacity-50
-                      ring-inset
-                    "
+                    class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-xs rounded text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset"
                     to="/"
                   >
                     <svg
@@ -88,25 +70,7 @@
                 </div>
                 <div class="text-center sm:text-right whitespace-nowrap">
                   <button
-                    class="
-                      transition
-                      duration-200
-                      mx-5
-                      px-5
-                      py-4
-                      cursor-pointer
-                      font-normal
-                      text-xs
-                      rounded
-                      text-gray-500
-                      hover:bg-gray-100
-                      focus:outline-none
-                      focus:bg-gray-200
-                      focus:ring-2
-                      focus:ring-gray-400
-                      focus:ring-opacity-50
-                      ring-inset
-                    "
+                    class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-xs rounded text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
