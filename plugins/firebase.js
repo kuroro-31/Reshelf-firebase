@@ -12,7 +12,8 @@ const firebaseConfig = {
   measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 }
 const firebase = initializeApp(firebaseConfig)
-// const db = firebase.firestore()
+// const auth = firebase.auth()
+const db = firebase.firestore()
 const storage = firebase.storage()
 const analytics = getAnalytics(firebase)
 // collection references
