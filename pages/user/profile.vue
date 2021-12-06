@@ -26,17 +26,7 @@
                         <input
                           v-model="fb_user.name"
                           type="text"
-                          class="
-                            leading-none
-                            text-gray-900
-                            p-3
-                            focus:outline-none focus:border-blue-700
-                            mt-4
-                            bg-gray-100
-                            border
-                            rounded
-                            border-gray-200
-                          "
+                          class="leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200"
                         />
                       </div>
                     </div>
@@ -45,17 +35,7 @@
                         <label class="font-semibold leading-none">Email</label>
                         <input
                           type="text"
-                          class="
-                            leading-none
-                            text-gray-900
-                            p-3
-                            focus:outline-none focus:border-blue-700
-                            mt-4
-                            bg-gray-200
-                            border
-                            rounded
-                            border-gray-200
-                          "
+                          class="leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-200 border rounded border-gray-200"
                           :value="fb_user.email"
                           disabled
                         />

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const options = {
   workboxURL:
     'https://cdn.jsdelivr.net/npm/workbox-cdn@5.1.4/workbox/workbox-sw.js',
@@ -6,13 +8,13 @@ const options = {
   cacheOptions: {
     cacheId: 'nuxt-prod',
     directoryIndex: '/',
-    revision: '9TMbgI2RmJtY',
+    revision: 'XKF6jlVtVQgY',
   },
   clientsClaim: true,
   skipWaiting: true,
   cleanupOutdatedCaches: true,
   offlineAnalytics: false,
-  preCaching: [{ revision: '9TMbgI2RmJtY', url: '/?standalone=true' }],
+  preCaching: [{ revision: 'XKF6jlVtVQgY', url: '/?standalone=true' }],
   runtimeCaching: [
     {
       urlPattern: '/_nuxt/',
