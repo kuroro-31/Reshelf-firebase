@@ -1,5 +1,5 @@
 // Sass-loderの処理速度を速くするために必要らしい
-import Sass from 'sass'
+// import Sass from 'sass'
 
 require('dotenv').config()
 const {
@@ -124,11 +124,11 @@ export default {
     // analyze: true,
 
     // Sass変換
-    loaders: {
-      scss: {
-        implementation: Sass,
-      },
-    },
+    // loaders: {
+    //   scss: {
+    //     implementation: Sass,
+    //   },
+    // },
 
     // 保存時にESlintの実行
     extend(config, ctx) {
