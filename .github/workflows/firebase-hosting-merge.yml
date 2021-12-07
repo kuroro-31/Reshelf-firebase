@@ -1,4 +1,4 @@
-name: Github Actionsで Firebaseに Build & Deploy
+name: Firebaseに Build & Deploy & Slack通知
 'on':
   push:
     branches:
@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Nuxtアプリのビルド(環境変数設定含む)
-        run: npm ci && npm run build
+        run: npm i && npm run build
         env:
           # BASE_URL: ${{ secrets.BASE_URL }}
           FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
