@@ -56,3 +56,4 @@ Thumbs.db
 .firebase/*
 .github/workflows/*
 functions/static/*
+static/sw.js

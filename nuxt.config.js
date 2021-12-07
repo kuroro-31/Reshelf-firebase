@@ -1,6 +1,3 @@
-// Sass-loderの処理速度を速くするために必要らしい
-// import Sass from 'sass'
-
 require('dotenv').config()
 const {
   FIREBASE_API_KEY,
@@ -81,11 +78,6 @@ export default {
     ],
   },
 
-  // loading: {
-  //   color: '#3173F7',
-  //   height: '5px',
-  // },
-  // loading: '~/components/atoms/Loading.vue',
   loading: false,
 
   plugins: [
@@ -94,9 +86,7 @@ export default {
     '~/plugins/vue-highlightjs',
     '~/plugins/firebase.js',
   ],
-  vendor: [
-    'vue-i18n', // i18n
-  ],
+  vendor: ['vue-i18n'],
 
   modules: [
     '@nuxtjs/axios',
@@ -122,13 +112,6 @@ export default {
     hardSource: true,
     standalone: true,
     // analyze: true,
-
-    // Sass変換
-    // loaders: {
-    //   scss: {
-    //     implementation: Sass,
-    //   },
-    // },
 
     // 保存時にESlintの実行
     extend(config, ctx) {
