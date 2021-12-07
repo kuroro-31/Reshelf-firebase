@@ -1,5 +1,4 @@
 // Sass-loderの処理速度を速くするために必要らしい
-import Fiber from 'fibers'
 import Sass from 'sass'
 
 require('dotenv').config()
@@ -128,9 +127,6 @@ export default {
     loaders: {
       scss: {
         implementation: Sass,
-        sassOptions: {
-          fiber: Fiber,
-        },
       },
     },
 
