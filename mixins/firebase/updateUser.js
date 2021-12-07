@@ -11,14 +11,13 @@ export const updateUser = {
     fb_user: {
       handler: _.debounce(function () {
         this.updateProfile()
-      }, 3000), // memosのデータの更新が終わった5秒後に実行される
+      }, 3000),
       deep: true,
     },
   },
   methods: {
     updateProfile() {
       this.alert = '保存中です...'
-
       const auth = getAuth()
       updateProfile(auth.currentUser, {
         displayName: this.fb_user.name,

@@ -283,6 +283,9 @@
                   <nuxt-link class="menu-me-link" to="/user/setting">
                     アカウント設定
                   </nuxt-link>
+                  <span class="menu-me-link" @click="deleteAccount">
+                    退会する
+                  </span>
                 </div>
                 <!-- <div class="menu-me">
                   <nuxt-link class="menu-me-link" to="/user/top">
@@ -325,6 +328,7 @@
 
 <script>
 import { firebaseAuth } from '@/mixins/firebase/firebaseAuth.js'
+import { deleteAccount } from '@/mixins/firebase/deleteUser.js'
 import ReButton from '@/components/atoms/ReButton'
 import Logo from '@/components/atoms/Logo.vue'
 // import ReModal from '@/components/atoms/ReModal'
@@ -339,7 +343,7 @@ export default {
     FacebookLogin,
     UserIcon,
   },
-  mixins: [firebaseAuth],
+  mixins: [firebaseAuth, deleteAccount],
   data() {
     return {
       visible: false,
