@@ -7,7 +7,7 @@ const app = express()
 app.all(
   '/*',
   basicAuth(function (user, password) {
-    return user === 'reshelf' && password === 'devpass'
+    return user === 'dev' && password === 'dev'
   })
 )
 
