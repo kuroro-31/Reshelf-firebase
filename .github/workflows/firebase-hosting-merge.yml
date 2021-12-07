@@ -2,8 +2,8 @@ name: Firebaseに Build & Deploy & Slack通知
 'on':
   push:
     branches:
-      - master
-      # - dev
+      # - master
+      - dev
 
 env:
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOKS }}
