@@ -4,6 +4,7 @@
     :class="{ mouseover: chiledNote.mouseover && !chiledNote.editing }"
     @mouseover="onMouseOver"
     @mouseleave="onMouseLeave"
+    @click="onClickEdit(chiledNote)"
   >
     <template v-if="chiledNote.editing">
       <input
@@ -23,7 +24,6 @@
       <div v-show="chiledNote.mouseover" class="buttons">
         <div class="button-icon">サイトマップ</div>
         <div class="button-icon">追加</div>
-        <div class="button-icon" @click="onClickEdit(chiledNote)">編集</div>
         <div class="button-icon" @click="onClickDelete(chiledNote)">削除</div>
       </div>
     </template>
