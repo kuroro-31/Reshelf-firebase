@@ -23,37 +23,30 @@
           </div>
         </nav>
         <div class="main-body scroll-none">
-          <div
-            v-if="$store.state.authenticate.authenticated"
-            class="main-body-content"
-          >
+          <div class="main-body-content">
             <p class="mb-4">{{ alert }}</p>
             <!-- <all-item :items="items" /> -->
-            <form @submit.prevent="create">
-              <!-- タイトル -->
-              <label class="font-semibold text-xs text-gray-600 pb-1 block">
-                タイトル
-              </label>
-              <input
-                v-model.trim="post.title"
-                type="text"
-                placeholder="タイトル"
-                autofocus
-                class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
+            <div>
+              <!-- ノートリスト -->
+              <NoteItem
+                v-for="note in noteList"
+                :key="note.id"
+                :note="note"
+                @delete="onDeleteNote"
               />
 
-              <!-- 保存 -->
+              <!-- ノート追加ボタン -->
               <re-button class="re-button">
                 <button
-                  type="submit"
                   class="re-button-primary-filled bg-primary"
+                  @click="onClickButtonAdd"
                 >
-                  保存
+                  追加
                 </button>
               </re-button>
-            </form>
+            </div>
           </div>
-          <div v-else>ログインしてください</div>
+          <!-- <div v-else>ログインしてください</div> -->
         </div>
       </div>
     </div>
@@ -62,17 +55,19 @@
 </template>
 <script>
 import _ from 'lodash'
-import { mapGetters, mapActions } from 'vuex'
+// import { mapGetters, mapActions } from 'vuex'
 
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
 // atoms
 import ReButton from '@/components/atoms/ReButton.vue'
+import NoteItem from '@/components/atoms/item/new/NoteItem.vue'
 
 export default {
   components: {
     HeaderNav,
     ReButton,
+    NoteItem,
   },
 
   data() {
@@ -82,39 +77,23 @@ export default {
       },
       errors: {},
       alert: '',
+      noteList: [],
     }
   },
   methods: {
-    ...mapGetters({
-      authenticated: 'authenticate/authenticated',
-    }),
-    async create() {
-      this.$axios.defaults.withCredentials = true
-
-      if (!this.authenticated) {
-        this.$nuxt.$router.push({ path: '/auth/login' })
-      } else {
-        // this.$nuxt.$loading.start()
-        this.alert = '保存中です...'
-
-        await this.$axios.get('/sanctum/csrf-cookie').then(async () => {
-          await this.$axios
-            .post('/api/posts', this.post)
-            .then(({ data }) => {
-              // this.$nuxt.$router.back()
-              // this.$nuxt.$router.push({ path: '/' })
-              this.alert = '保存しました。'
-            })
-            .catch(({ response: { data } }) => {
-              // alert(data.message)
-              console.log(data.message)
-
-              alert(data.message)
-              // this.$nuxt.$router.push({ path: '/auth/login' })
-            })
-        })
-        // this.$nuxt.$loading.finish()
-      }
+    // ...mapGetters({
+    //   authenticated: 'authenticate/authenticated',
+    // }),
+    onClickButtonAdd() {
+      this.noteList.push({
+        id: new Date().getTime().toString(16),
+        name: `新規ノート`,
+        mouseover: false,
+      })
+    },
+    onDeleteNote(deleteNote) {
+      const index = this.noteList.indexOf(deleteNote)
+      this.noteList.splice(index, 1)
     },
   },
 }
