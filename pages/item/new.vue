@@ -26,13 +26,16 @@
           <div class="main-body-content">
             <p class="mb-4">{{ alert }}</p>
             <!-- <all-item :items="items" /> -->
-            <div>
+            <div @click.self="onEditNoteEnd()">
               <!-- ノートリスト -->
               <NoteItem
                 v-for="note in noteList"
                 :key="note.id"
                 :note="note"
+                @childNote="getChildNote"
                 @delete="onDeleteNote"
+                @editStart="onEditNoteStart"
+                @editEnd="onEditNoteEnd"
               />
 
               <!-- ノート追加ボタン -->
@@ -75,7 +78,7 @@ export default {
       post: {
         title: '',
       },
-      errors: {},
+      // errors: {},
       alert: '',
       noteList: [],
     }
@@ -89,11 +92,25 @@ export default {
         id: new Date().getTime().toString(16),
         name: `新規ノート`,
         mouseover: false,
+        editing: false,
       })
+    },
+    getChildNote(newVal) {
+      this.noteList = newVal
     },
     onDeleteNote(deleteNote) {
       const index = this.noteList.indexOf(deleteNote)
       this.noteList.splice(index, 1)
+    },
+    onEditNoteStart(editNote) {
+      for (let note of this.noteList) {
+        note.editing = note.id === editNote.id
+      }
+    },
+    onEditNoteEnd() {
+      for (let note of this.noteList) {
+        note.editing = false
+      }
     },
   },
 }

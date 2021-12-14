@@ -1,21 +1,32 @@
 <template>
   <div
     class="note"
-    :class="{ mouseover: chiledNote.mouseover }"
+    :class="{ mouseover: chiledNote.mouseover && !chiledNote.editing }"
     @mouseover="onMouseOver"
     @mouseleave="onMouseLeave"
   >
-    <div class="note-icon">
-      <i class="fas fa-file-alt"></i>
-    </div>
-    <div class="note-name">{{ chiledNote.name }}</div>
+    <template v-if="chiledNote.editing">
+      <input
+        id="editting"
+        v-model="chiledNote.name"
+        class="transparent"
+        autofocus
+        @keypress.enter="onEditEnd"
+      />
+    </template>
+    <template v-else>
+      <div class="note-icon">
+        <i class="fas fa-file-alt"></i>
+      </div>
+      <div class="note-name">{{ chiledNote.name }}</div>
 
-    <div v-show="chiledNote.mouseover" class="buttons">
-      <div class="button-icon">サイトマップ</div>
-      <div class="button-icon">追加</div>
-      <div class="button-icon">編集</div>
-      <div class="button-icon" @click="onClickDelete(note)">削除</div>
-    </div>
+      <div v-show="chiledNote.mouseover" class="buttons">
+        <div class="button-icon">サイトマップ</div>
+        <div class="button-icon">追加</div>
+        <div class="button-icon" @click="onClickEdit(chiledNote)">編集</div>
+        <div class="button-icon" @click="onClickDelete(chiledNote)">削除</div>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -23,7 +34,7 @@
 export default {
   props: {
     note: {
-      type: Array,
+      type: Object,
       required: true,
     },
   },
@@ -46,6 +57,13 @@ export default {
     },
     onClickDelete(note) {
       this.$emit('delete', note)
+    },
+    onClickEdit(note) {
+      this.$emit('editStart', note)
+      this.$nextTick(() => document.getElementById('editting').focus())
+    },
+    onEditEnd() {
+      this.$emit('editEnd')
     },
   },
 }
