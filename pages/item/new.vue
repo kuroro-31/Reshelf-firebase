@@ -12,14 +12,14 @@
           <div class="item">
             <span class="item-title">受講生</span>
             <nuxt-link class="item-link" to="/user/learning">
-              >受講中のコース
+              受講中のコース
             </nuxt-link>
             <nuxt-link class="item-link" to="/user/like">お気に入り</nuxt-link>
             <nuxt-link class="item-link" to="/user/bought">購入履歴</nuxt-link>
 
             <span class="item-title">受講生</span>
             <nuxt-link class="item-link" to="/user/learning">
-              >受講中のコース
+              受講中のコース
             </nuxt-link>
             <nuxt-link class="item-link" to="/user/like">お気に入り</nuxt-link>
             <nuxt-link class="item-link" to="/user/bought">購入履歴</nuxt-link>
@@ -31,15 +31,19 @@
             <!-- <all-item :items="items" /> -->
             <div @click.self="onEditNoteEnd()">
               <!-- ノートリスト -->
-              <NoteItem
-                v-for="note in noteList"
-                :key="note.id"
-                :note="note"
-                @childNote="getChildNote"
-                @delete="onDeleteNote"
-                @editStart="onEditNoteStart"
-                @editEnd="onEditNoteEnd"
-              />
+              <draggable :list="noteList" group="notes" :animation="200">
+                <NoteItem
+                  v-for="note in noteList"
+                  :key="note.id"
+                  :note="note"
+                  :layer="1"
+                  @delete="onDeleteNote"
+                  @editStart="onEditNoteStart"
+                  @editEnd="onEditNoteEnd"
+                  @addChild="onAddChildNote"
+                  @addNoteAfter="onAddNoteAfter"
+                />
+              </draggable>
 
               <!-- ノート追加ボタン -->
               <re-button class="re-button">
@@ -62,6 +66,7 @@
 <script>
 import _ from 'lodash'
 // import { mapGetters, mapActions } from 'vuex'
+import draggable from 'vuedraggable'
 
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
@@ -71,6 +76,7 @@ import NoteItem from '@/components/atoms/item/new/NoteItem.vue'
 
 export default {
   components: {
+    draggable,
     HeaderNav,
     ReButton,
     NoteItem,
@@ -90,30 +96,56 @@ export default {
     // ...mapGetters({
     //   authenticated: 'authenticate/authenticated',
     // }),
-    onClickButtonAdd() {
-      this.noteList.push({
+    onAddNoteCommon: function (targetList, layer, index) {
+      layer = layer || 1
+      const note = {
         id: new Date().getTime().toString(16),
-        name: `新規ノート`,
+        name: `新規ノート-${layer}-${targetList.length}`,
         mouseover: false,
         editing: false,
-      })
+        children: [],
+        layer: layer,
+      }
+      if (index == null) {
+        targetList.push(note)
+      } else {
+        targetList.splice(index + 1, 0, note)
+      }
     },
-    getChildNote(newVal) {
-      this.noteList = newVal
+    onClickButtonAdd: function () {
+      this.onAddNoteCommon(this.noteList)
     },
-    onDeleteNote(deleteNote) {
-      const index = this.noteList.indexOf(deleteNote)
-      this.noteList.splice(index, 1)
+    onDeleteNote: function (parentNote, note) {
+      const targetList =
+        parentNote == null ? this.noteList : parentNote.children
+      const index = targetList.indexOf(note)
+      targetList.splice(index, 1)
     },
-    onEditNoteStart(editNote) {
-      for (let note of this.noteList) {
+    onEditNoteStart: function (editNote, parentNote) {
+      const targetList =
+        parentNote == null ? this.noteList : parentNote.children
+      for (let note of targetList) {
         note.editing = note.id === editNote.id
+        this.onEditNoteStart(editNote, note)
       }
     },
-    onEditNoteEnd() {
-      for (let note of this.noteList) {
+    onEditNoteEnd: function (parentNote) {
+      const targetList =
+        parentNote == null ? this.noteList : parentNote.children
+      for (let note of targetList) {
         note.editing = false
+        this.onEditNoteEnd(note)
       }
+    },
+    onAddChildNote: function (note) {
+      this.onAddNoteCommon(note.children, note.layer + 1)
+    },
+    onAddNoteAfter: function (parentNote, note) {
+      const targetList =
+        parentNote == null ? this.noteList : parentNote.children
+      const layer = parentNote == null ? 1 : note.layer
+      const index = targetList.indexOf(note)
+      this.onAddNoteCommon(targetList, layer, index)
     },
   },
 }
