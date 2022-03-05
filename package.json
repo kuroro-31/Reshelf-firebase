@@ -23,7 +23,8 @@
     "firebase": "^9.5.0",
     "firebase-admin": "^10.0.0",
     "nuxt": "^2.15.8",
-    "nuxt-svg-loader": "^1.2.0"
+    "nuxt-svg-loader": "^1.2.0",
+    "vuedraggable": "^2.24.3"
   },
   "devDependencies": {
     "@johmun/vue-tags-input": "^2.1.0",

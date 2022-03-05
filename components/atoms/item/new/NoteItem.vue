@@ -2,9 +2,13 @@
   <div class="note-family">
     <div
       class="note"
-      :class="{ mouseover: propsNote.mouseover && !propsNote.editing }"
+      :class="{
+        mouseover: propsNote.mouseover && !propsNote.editing,
+        selected: propsNote.selected,
+      }"
       @mouseover="onMouseOver"
       @mouseleave="onMouseLeave"
+      @click="onSelect(propsNote)"
     >
       <template v-if="propsNote.editing">
         <input
@@ -49,6 +53,7 @@
           :parent-note="note"
           :layer="layer + 1"
           @delete="onClickDelete"
+          @select="onSelect"
           @editStart="onClickEdit"
           @editEnd="onEditEnd"
           @addChild="onClickChildNote"
@@ -97,6 +102,9 @@ export default {
     },
     onMouseLeave() {
       this.propsNote.mouseover = false
+    },
+    onSelect(propsNote) {
+      this.$emit('select', propsNote)
     },
     onClickDelete(parentNote, note) {
       this.$emit('delete', parentNote, note)
@@ -148,6 +156,11 @@ export default {
 .mouseover {
   @apply cursor-pointer;
   background-color: #ebebeb;
+}
+.selected {
+  color: black;
+  background-color: rgb(232, 231, 228);
+  font-weight: 600;
 }
 .child-note {
   padding-left: 10px;

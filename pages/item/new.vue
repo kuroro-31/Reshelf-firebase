@@ -4,7 +4,7 @@
     @click.self="onEditNoteEnd()"
   >
     <HeaderNav />
-    <div class="w-full flex max-w-screen-lg mx-auto container scroll-none">
+    <div class="w-full flex max-w-screen-2xl mx-auto container scroll-none">
       <div class="lg:flex w-full mt-4">
         <nav
           class="card side-nav lg:max-h-(screen-22) pin-22 scroll-none mb-auto"
@@ -23,12 +23,6 @@
             </nuxt-link>
             <nuxt-link class="item-link" to="/user/like">お気に入り</nuxt-link>
             <nuxt-link class="item-link" to="/user/bought">購入履歴</nuxt-link>
-          </div>
-        </nav>
-        <div class="main-body scroll-none">
-          <div class="main-body-content">
-            <p class="mb-4">{{ alert }}</p>
-            <!-- <all-item :items="items" /> -->
             <div @click.self="onEditNoteEnd()">
               <!-- ノートリスト -->
               <draggable :list="noteList" group="notes" :animation="200">
@@ -38,6 +32,7 @@
                   :note="note"
                   :layer="1"
                   @delete="onDeleteNote"
+                  @select="onSelectNote"
                   @editStart="onEditNoteStart"
                   @editEnd="onEditNoteEnd"
                   @addChild="onAddChildNote"
@@ -55,6 +50,38 @@
                 </button>
               </re-button>
             </div>
+          </div>
+        </nav>
+        <div class="main-body scroll-none">
+          <div class="main-body-content">
+            <p class="mb-4">{{ alert }}</p>
+            <!-- <all-item :items="items" /> -->
+            <template v-if="selectedNote == null">
+              <div class="no-selected-note">ノートを選択してください</div>
+            </template>
+            <template v-else>
+              <div class="path">
+                <small>{{ selectedPath }}</small>
+              </div>
+              <div class="note-content">
+                <h3 class="note-title">{{ selectedNote.name }}</h3>
+                <draggable :list="selectedNote.widgetList" group="widgets">
+                  <WidgetItem
+                    v-for="widget in selectedNote.widgetList"
+                    :key="widget.id"
+                    :widget="widget"
+                    :layer="1"
+                    @delete="onDeleteWidget"
+                    @addChild="onAddChildWidget"
+                    @addWidgetAfter="onAddWidgetAfter"
+                  />
+                </draggable>
+                <button class="transparent" @click="onClickButtonAddWidget">
+                  <i class="fas fa-plus-square"></i>
+                  ウィジェットを追加
+                </button>
+              </div>
+            </template>
           </div>
           <!-- <div v-else>ログインしてください</div> -->
         </div>
@@ -92,6 +119,21 @@ export default {
       noteList: [],
     }
   },
+  computed: {
+    selectedPath() {
+      const searchSelectedPath = function (noteList, path) {
+        for (let note of noteList) {
+          const currentPath =
+            path == null ? note.name : `${path} / ${note.name}`
+          if (note.selected) return currentPath
+          const selectedPath = searchSelectedPath(note.children, currentPath)
+          if (selectedPath.length > 0) return selectedPath
+        }
+        return ''
+      }
+      return searchSelectedPath(this.noteList)
+    },
+  },
   methods: {
     // ...mapGetters({
     //   authenticated: 'authenticate/authenticated',
@@ -105,6 +147,7 @@ export default {
         editing: false,
         children: [],
         layer: layer,
+        selected: false,
       }
       if (index == null) {
         targetList.push(note)
@@ -120,6 +163,19 @@ export default {
         parentNote == null ? this.noteList : parentNote.children
       const index = targetList.indexOf(note)
       targetList.splice(index, 1)
+    },
+    onSelectNote(targetNote) {
+      // 再帰的にノートの選択状態を更新
+      const updateSelectStatus = function (targetNote, noteList) {
+        for (let note of noteList) {
+          note.selected = note.id === targetNote.id
+          updateSelectStatus(targetNote, note.children)
+        }
+      }
+      updateSelectStatus(targetNote, this.noteList)
+
+      // 選択中ノート情報を更新
+      this.selectedNote = targetNote
     },
     onEditNoteStart: function (editNote, parentNote) {
       const targetList =
@@ -152,7 +208,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .side-nav {
-  @apply hidden w-full lg:block mt-6 lg:w-1/4 xl:w-1/5 z-10 lg:sticky overflow-y-auto;
+  @apply hidden w-full lg:block mt-6 lg:w-1/4 z-10 lg:sticky overflow-y-auto;
 }
 .main-body {
   @apply w-full lg:w-3/4 xl:w-4/5 p-6 lg:pl-10;
@@ -184,6 +240,35 @@ export default {
     border-radius: 0.5rem !important;
     code {
       border-radius: 0.5rem !important;
+    }
+  }
+}
+.main-page {
+  display: flex;
+  height: calc(100vh - 60px);
+  .left-menu {
+    width: 350px;
+    background-color: #f7f6f3;
+  }
+  .right-view {
+    flex-grow: 1;
+    padding: 10px;
+    .no-selected-note {
+      text-align: center;
+      font-size: 25px;
+      margin: 20px;
+    }
+    .path {
+      text-align: left;
+      margin-bottom: 50px;
+    }
+    .note-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+      .note-title {
+        margin-bottom: 25px;
+      }
     }
   }
 }
